@@ -3,7 +3,7 @@ author: 小莫
 date: 2016-05-11
 title: angularjs复选框
 tags: angularjs
-category: ng-checkbox
+category: angularjs之ng-checkbox
 status: publish
 summary: 使用angularjs做复选框，这也是一个常见的需求，
 -->

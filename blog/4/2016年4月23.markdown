@@ -1,9 +1,9 @@
 <!--
 author: 小莫
-date: 2016-05-11
+date: 2016-05-10
 title: angularjs的验证系统
 tags: angularjs
-category: ng-validate
+category: anguarljs表单验证
 status: publish
 summary: 使用angularjs的验证系统来做前端验证需要注意的一些地方
 -->
@@ -11,7 +11,9 @@ summary: 使用angularjs的验证系统来做前端验证需要注意的一些�
 ### 今日分享
 #### angularjs的验证系统
 ### 1. 效果图
- ![angularjs验证效果图](http://static.xiaomo.info/markdown/images/validate.gif)
+ ![angularjs验证效果图](./../img/validate.gif)
+ 如果看起来比较小也可以手动点击下面的链接查看大图  
+ [uirouter效果](./../img/validate.gif)
 ### 2. 要点
 
 ##### a:要点1：给form起一个名字,并禁掉原生的验证
@@ -41,7 +43,7 @@ summary: 使用angularjs的验证系统来做前端验证需要注意的一些�
 | :----: |:------:|
 |angular-ui|  ng-messages|
 |第三方扩展| w5cValidator|
-|jquery-validate|  JQ的插件   |
+|jquery-validate|JQ的插件|
 
 附上我github的地址
    [https://github.com/qq83387856](https://github.com/qq83387856)

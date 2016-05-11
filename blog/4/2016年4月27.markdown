@@ -3,11 +3,11 @@ author: 小莫
 date: 2016-05-11
 title: 使用angularjs的$http异步删除数据
 tags: angularjs
-category: CRUD
+category: angularjs增删改查
 status: publish
 summary: 使用angularj异步删除数据
 -->
-#今日分享：删除
+#使用angularjs删除数据
 ####有人会说删除这东西有什么可讲的，写个删除的service，controller一调不就完了。
 嗯...看起来是这样，但是具体实现起来真的有这么简单吗？首先有以下几个坑
 * 怎么确定数据是否删除成功？
@@ -74,6 +74,3 @@ controller里面注意事项
                     });
                 };
 ```
-
-附上我github的地址
-   [https://github.com/qq83387856](https://github.com/qq83387856)

@@ -40,7 +40,7 @@ summary: 由于生活在天朝这个神奇的国度，因此任何网站都会�
 这个就不用多说了吧，直接删除插件目录下对应的文件夹就好了
 
 ###### 最后 给个gif的教程，配着文字版看 真是爽歪歪有木有！！！
-![atom插件安装分享](http://static.xiaomo.info/markdown/images/atomPlugins.gif)
+![atom插件安装分享](./../img/atomPlugins.gif)
 
-附上我github的地址
-   [https://github.com/qq83387856](https://github.com/qq83387856)
+如果看起来看起来比较小效果不佳也可以点击下面链接查看大图  
+[atom插件安装分享](./../img/atomPlugins.gif)

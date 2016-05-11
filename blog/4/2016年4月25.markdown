@@ -1,14 +1,13 @@
 <!--
 author: 小莫
 date: 2016-05-11
-title: angularjs的验证系统
+title: 第三方组件ui-router的简单使用
 tags: angularjs
-category: ui-router
+category: angularjs之ui-router
 status: publish
-summary: ui-router的使用
+summary: 因为1.x的angularjs自带的ng-router功能比较弱，不支持路由嵌套。因些我们要使用到ui-router这个组件
 -->
 
-### 今日分享
 # ui-router使用
 1. 多视图用@，嵌套用parent.child这种子路由
 >要切换的视图(main)用ui-view,始终不会变成其他内容的不需要路由
@@ -20,9 +19,11 @@ summary: ui-router的使用
 * main.d
 *  ....
 
->效果图(因为gif太大github显示不出来,手动打开即可)
+>效果图
+![uirouter效果](./../img/uirouter.gif)
 
-[uirouter效果图](http://static.xiaomo.info/markdown/images/uirouter.gif)
+如果看起来比较小也可以手动点击下面的链接查看大图  
+[uirouter效果](./../img/uirouter.gif)
 
 >html 使用ui-sref
 ```

@@ -3,7 +3,7 @@ author: 小莫
 date: 2016-05-11
 title: 表单添加之ng-options
 tags: angularjs
-category: ng-options
+category: angulrjs之ng-options
 status: publish
 summary: 我们在使用select>option的时候经常会遇到一些问题，这里是对ng-options使用的一些总结。
 -->
@@ -41,6 +41,3 @@ summary: 我们在使用select>option的时候经常会遇到一些问题，这�
 >controller中接收设置的ng-model,就可以解决html和controller之间的通讯了
 
 > ######参考自 ：[runjs源码](http://runjs.cn/code/nhi8ubrb)
-
-附上我github的地址
-   [https://github.com/qq83387856](https://github.com/qq83387856)
