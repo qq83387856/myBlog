@@ -57,8 +57,10 @@ summary: 使用angularjs做复选框，这也是一个常见的需求，
     };
 ```
 
->效果图(因为gif太大github显示不出来,手动打开即可)
+>效果图
 
+![checkbox效果图](http://static.xiaomo.info/markdown/images/checkbox.gif)
+图太小看不爽 ？点击下面链接全屏查看  
 [checkbox效果图](http://static.xiaomo.info/markdown/images/checkbox.gif)
 
 >参考文档: [ZH奶酪：AngularJS判断checkbox/复选框是否选中并实时显示](http://www.cnblogs.com/CheeseZH/p/4517701.html)
