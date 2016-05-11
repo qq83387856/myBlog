@@ -14,18 +14,18 @@ summary: 我打算把github的代码用jenkins实时同步到线上，但是因�
 3. 确保你的机器上装了crontab服务且处于开启状态
 
 ## 二、正式开工 ##
->检查crontab服务
-`/sbin/service crond status `
-返回结果: `crond (pid  6621) is running...`
-如果是运行状态就是可以的
+>检查crontab服务  
+`/sbin/service crond status `  
+返回结果: `crond (pid  6621) is running...`  
+如果是运行状态就是可以的  
 
 >写shell的目录 
 $: cd /data2/xiaomo.info/java/bin  
 
-> 开始写shell 
-`$: touch gitpull.sh`
-`$: vim gitpull.sh `
-粘入以下内容
+> 开始写shell   
+`$: touch gitpull.sh`  
+`$: vim gitpull.sh `  
+粘入以下内容  
 ```	#!/bin/sh
     cd /data2/xiaomo.info/myBlog
     git pull
@@ -33,11 +33,11 @@ $: cd /data2/xiaomo.info/java/bin
 ```
 
 >写定时任务
-##### 查看定时任务
+##### 查看定时任务  
 `$: crontab -l`
-##### 创建定时任务
+##### 创建定时任务  
 `$: crontab -e `
-###### 粘入下面的内容
+###### 粘入下面的内容  
 ```
 #每分钟 执行git clone 命令
 */1 * * * * /bin/sh /data2/xiaomo.info/java/bin/gitpull.sh >>/data2/xiaomo.info/java/bin/git.log &
