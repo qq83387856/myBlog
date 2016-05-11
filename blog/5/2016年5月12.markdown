@@ -16,7 +16,8 @@ summary: 我打算把github的代码用jenkins实时同步到线上，但是因�
 ## 二、正式开工 ##
 >检查crontab服务  
 `/sbin/service crond status `  
-返回结果: `crond (pid  6621) is running...`  
+返回结果:  
+ `crond (pid  6621) is running...`  
 如果是运行状态就是可以的  
 
 >写shell的目录 
