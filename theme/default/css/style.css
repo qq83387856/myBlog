@@ -2391,6 +2391,7 @@ a.post-thumbnail:focus {
 	border-bottom: 1px solid transparent;
 	color: #707070;
 	color: rgba(51, 51, 51, 0.7);
+	text-decoration: none;
 }
 
 .site-info a:hover {
