@@ -40,7 +40,7 @@ h1-h6对应1-6个#
 # 6.表格
 ###### 说明：冒号控制居中样式 连续三根短横线表格
 | Tables        | Are           | Cool  |
-| :-----------: |:-----------:  | :----:|
+| :-----------: |:--------:  | :---:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
@@ -60,10 +60,10 @@ h1-h6对应1-6个#
 分段：两个回车
 
 #10. 带url的目录
-[1. 安装][1]
-[2. 目录结构][2]
-[3. 配置说明][3]
-[4. 编写博客][4]
+[1. 安装][1]  
+[2. 目录结构][2]  
+[3. 配置说明][3]  
+[4. 编写博客][4]  
 
 [1]:http://gitblogdoc.sinaapp.com/blog/gitblog/install.html
 [2]:http://gitblogdoc.sinaapp.com/blog/gitblog/struct.html
