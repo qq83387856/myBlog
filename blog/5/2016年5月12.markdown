@@ -26,10 +26,10 @@ $: cd /data2/xiaomo.info/java/bin
 `$: touch gitpull.sh`  
 `$: vim gitpull.sh `  
 粘入以下内容  
-```	#!/bin/sh
-    cd /data2/xiaomo.info/myBlog
-    git pull
-    echo '当前时间'+ `date '+%Y-%m-%d %H:%M:%S'`+'执行git clone 命令';
+```	#!/bin/sh  
+    cd /data2/xiaomo.info/myBlog  
+    git pull  
+    echo '当前时间'`date '+%Y-%m-%d %H:%M:%S'`'执行git clone 命令';
 ```
 
 >写定时任务
@@ -38,9 +38,10 @@ $: cd /data2/xiaomo.info/java/bin
 ##### 创建定时任务  
 `$: crontab -e `
 ###### 粘入下面的内容  
-```
+
 #每分钟 执行git clone 命令
-*/1 * * * * /bin/sh /data2/xiaomo.info/java/bin/gitpull.sh >>/data2/xiaomo.info/java/bin/git.log &
+```
+	*/1 * * * * /bin/sh /data2/xiaomo.info/java/bin/gitpull.sh >>/data2/xiaomo.info/java/bin/git.log &
 ```
 
 ## 三、验证设置的定时任务是否生效 ##
