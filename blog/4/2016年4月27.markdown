@@ -5,19 +5,18 @@ title: 使用angularjs的$http异步删除数据
 tags: angularjs
 category: angularjs增删改查
 status: publish
-summary: 使用angularj异步删除数据
+summary: 因为我在使用angularjs做异步删除数据的时候遇到了一些问题，所以把这些问题记录下面供大家参考，也加深自己的印象。
 -->
-#使用angularjs删除数据
-####有人会说删除这东西有什么可讲的，写个删除的service，controller一调不就完了。
+#### 有人会说删除这东西有什么可讲的，写个删除的service，controller调用一下不就完了。
 嗯...看起来是这样，但是具体实现起来真的有这么简单吗？首先有以下几个坑
 * 怎么确定数据是否删除成功？
 * 怎么同步视图的数据库的内容？
 
 # 1.思路
 ####1.实现方式一
-删除数据库中对应的内容，使用$apply将$scope中的对应的内容splice
+删除数据库中对应的内容,然后将$scope中的对应的内容splice
 ####2.实现方式二
-删除数据库中对应的内容，然后再reload一下数据
+删除数据库中对应的内容，然后再reload一下数据(也就是再调用一次查询方法，这种消耗可想而知，并且还要保证先删除数据再查询)
 
 #2.具体实现方式
 >删除数据的service：用异步，返回promise
