@@ -1,0 +1,31 @@
+#GitBlog配置文件，使用4个空格代替Tab
+---
+url: localhost:8888
+title: 小莫的博客
+subtitle: 我就是我，不一样的烟火...
+#beach cube default line quest simple
+theme: default
+enableCache: true
+highlight: true
+mathjax: false
+duoshuo:
+baiduAnalytics:
+keywords: GitBlog,博客,Markdown博客,jockchou
+description: >
+    GitBlog是一个简单易用的Markdown博客系统
+version: 2.2
+author:
+    name: 小莫
+    email: 83387856@qq.com
+    github: https://github.com/qq83387856
+    weibo: 奋进的小莫
+    avatar:
+blog:
+    recentSize: 5
+    pageSize: 6
+    pageBarSize: 5
+    allBlogsForPage: false
+text:
+    title: 介绍
+    intro: >
+          欢迎来到小莫的博客
