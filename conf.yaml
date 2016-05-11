@@ -8,9 +8,9 @@ theme: default
 enableCache: true
 highlight: true
 mathjax: false
-duoshuo:
-baiduAnalytics:
-keywords: GitBlog,博客,Markdown博客,jockchou
+duoshuo: xiaomoblog
+baiduAnalytics: 4a3beac0777d1574c6270827aacf19ff
+keywords: 小莫,博客,Markdown博客,xiaomo
 description: >
     GitBlog是一个简单易用的Markdown博客系统
 version: 2.2
