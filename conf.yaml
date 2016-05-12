@@ -12,7 +12,8 @@ duoshuo: xiaomoblog
 baiduAnalytics: 4a3beac0777d1574c6270827aacf19ff
 keywords: 小莫,博客,markdown,xiaomo,小漠,莫小莫,小莫吧
 description: >
-    小莫的博客主页
+    小莫的博客主页,这个博客是一个关于技术性的博客，主要分享一些博主在做开发过程中使用的一些技术和遇到的问题。
+    希望能够和大家一起进步，我是小莫，你呢？
 version: 2.2
 author:
     name: 小莫
