@@ -50,6 +50,3 @@ myApp.directive('ngEnter', function () {
 ###### 总结：两种方法都能实现敲回车登录的功能，不过推荐指令的方式，对$scope的污染比较低
 
 >参考文档：[angularjs学习笔记—事件指令](https://segmentfault.com/a/1190000002634554#articleHeader8)
-
-附上我github的地址
-   [https://github.com/qq83387856](https://github.com/qq83387856)
