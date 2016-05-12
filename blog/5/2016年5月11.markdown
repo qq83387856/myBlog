@@ -2,7 +2,7 @@
 author: 小莫
 date: 2016-05-11
 title: markdown语法
-tags: markdown语法
+tags: markdown
 category: markdown
 status: publish
 summary: markdown的一些基本语法，大致够用了
