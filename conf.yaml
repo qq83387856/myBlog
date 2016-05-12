@@ -10,16 +10,16 @@ highlight: true
 mathjax: false
 duoshuo: xiaomoblog
 baiduAnalytics: 4a3beac0777d1574c6270827aacf19ff
-keywords: 小莫,博客,Markdown博客,xiaomo
+keywords: 小莫,博客,markdown,xiaomo,小漠,莫小莫,小莫吧
 description: >
-    GitBlog是一个简单易用的Markdown博客系统
+    小莫的博客主页
 version: 2.2
 author:
     name: 小莫
     email: 83387856@qq.com
     github: https://github.com/qq83387856
     weibo: 奋进的小莫
-    avatar:
+    avatar: http://static.xiaomo.info/images/avatar.png
 blog:
     recentSize: 5
     pageSize: 6
