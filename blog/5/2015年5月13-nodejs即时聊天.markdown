@@ -10,42 +10,59 @@ summary: 最近在学习node，跟着书上的例子写的一个基于net模块�
 ## 一、搭建简易的服务器##
 `vim server.js`
 ```
-  //引入node的net模块
-  var net = require('net')
-  //创建一个服务器
-  var chatServer = net.createServer();
-  //定义一个客户端列表
-  var clientList = [];
-  //监听连接...
-  chatServer.on('connection', function(client) {
-  //给客户端反馈
-  client.name = client.remoteAddress+':'+client.remotePort;
-  client.write('Hi!'+client.name+',您己成功开启服务器，可以正常通讯了\n');
-  //将客户端放到客户端列表中
-  clientList.push(client);
-  //监听客户端信信息并给出反馈
-  client.on('data', function(data) {
-  // 把数据发送给所有客户端
+//引入node的net模块
+var net = require('net')
+//创建一个服务器
+var chatServer = net.createServer();
+//定义一个客户端列表
+var clientList = [];
+//监听连接...
+chatServer.on('connection', function(client) {
+//给客户端反馈
+client.name = client.remoteAddress+':'+client.remotePort;
+client.write('Hi!'+client.name+',您己成功连接服务器，可以正常通讯了..\n');
+console.log(client.name+'加入了聊天...')
+//将客户端放到客户端列表中
+clientList.push(client);
+//监听客户端信信息并给出反馈
+client.on('data', function(data) {
+// 把数据发送给所有客户端
       broadcast(data,client);
     });
 
-  //监听离线事件
-  client.on('end',function(){
+//监听离线事件
+client.on('end',function(){
+    console.log(client.name+'quit...')
     clientList.splice(clientList.indexOf(client),1);
     client.write('用户:'+client.name+'退出了当前服务\n');
     })
-  })
+//监听错误事件
+client.on('error',function(e){
+    console.log(e);
+})
 
-  /**
-  *  广播消息
-  **/
-  function broadcast(message,client){
-    for(var i=0;i<clientList.length;i++) {
-        if(clientList[i]!==client[i]){
-            clientList[i].write(client.name+'说:'+message);
-        }
-    }
-  }
+})
+/**
+ *  广播消息
+ **/
+ function broadcast(message,client){
+     var cleanUp=[];
+     for(var i=0;i<clientList.length;i++) {
+         if(clientList[i]!==client[i]){
+             if(clientList[i].writable){
+             clientList[i].write(client.name+'说:'+message);
+             } else{
+                 cleanUp.push(clientList[i]);
+                 clientList[i].destroy();
+             }
+         }
+     }
+     //在写入循环中删除死节点，消除垃圾索引
+     for(var i =0;i<cleanUp.length;i++){
+         clientList.splice(clientList.indexOf(cleanUp[i],i));
+     }
+ }
+
 ```
 开启服务器
 `node server.js`   
