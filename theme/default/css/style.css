@@ -6005,3 +6005,130 @@ p > video {
 	line-height: 2.5;
 	border-radius: 20px;
 }
+
+.tag {
+	margin:0 0 7px 20px;
+	position:relative;
+
+	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:0.75em;
+	font-weight:bold;
+	text-decoration:none;
+
+	color:greenyellow;
+	text-shadow:0px 1px 0px rgba(255,255,255,.4);
+
+	padding:0.417em 0.417em 0.417em 0.917em;
+
+	border-top:1px solid #d99d38;
+	border-right:1px solid #d99d38;
+	border-bottom:1px solid #d99d38;
+
+	-webkit-border-radius:0 0.25em 0.25em 0;
+	-moz-border-radius:0 0.25em 0.25em 0;
+	border-radius:0 0.25em 0.25em 0;
+
+	background-image: -webkit-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -moz-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -o-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -ms-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#feda71', EndColorStr='#feba47');
+
+	-webkit-box-shadow:
+			inset 0 1px 0 #faeaba,
+			0 1px 1px rgba(0,0,0,.1);
+	-moz-box-shadow:
+			inset 0 1px 0 #faeaba,
+			0 1px 1px rgba(0,0,0,.1);
+	box-shadow:
+			inset 0 1px 0 #faeaba,
+			0 1px 1px rgba(0,0,0,.1);
+}
+
+.tag:before {
+	content:'';
+
+	width:1.30em;
+	height:1.358em;
+
+	background-image: -webkit-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -moz-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -o-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -ms-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#feda71', EndColorStr='#feba47');
+
+	position:absolute;
+	left:-0.69em;
+	top:.2em;
+
+	-webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	transform:rotate(45deg);
+
+	border-left:1px solid #d99d38;
+	border-bottom:1px solid #d99d38;
+
+	-webkit-border-radius:0 0 0 0.25em;
+	-moz-border-radius:0 0 0 0.25em;
+	border-radius:0 0 0 0.25em;
+
+	z-index:1;
+}
+
+.tag:after {
+	content:'';
+
+	width:0.5em;
+	height:0.5em;
+
+	background:#fff;
+
+	-webkit-border-radius:4.167em;
+	-moz-border-radius:4.167em;
+	border-radius:4.167em;
+
+	border:1px solid #d99d38;
+
+	-webkit-box-shadow:0 1px 0 #faeaba;
+	-moz-box-shadow:0 1px 0 #faeaba;
+	box-shadow:0 1px 0 #faeaba;
+
+	position:absolute;
+	top:0.667em;
+	left:-0.083em;
+	z-index:9999;
+}
+
+.tag:hover {
+	background-image: -webkit-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -moz-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -o-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -ms-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#fee18d', EndColorStr='#fec86c');
+
+	border-color:#e1b160;
+}
+
+.tag:hover:before {
+	background-image: -webkit-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -moz-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -o-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -ms-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#fee18d', EndColorStr='#fec86c');
+
+	border-color:#e1b160;
+}
+
+.label{position:relative; display:inline-block; background:#0a9; font-size:12px; margin-right:10px}
+.label a{color:#fff; display:inline-block; padding:3px 6px; text-decoration:none}
+.label-arrow{position:absolute; border:4px solid rgba(0,0,0,0); height:0; line-height:0; font-size:0}
+.label-arrow-l{top:6px; left:-8px; border-right-color:#0a9}
+.label-arrow-r{top:6px; right:-8px; border-left-color:#0a9}
+.label-arrow-t{top:-8px; left:50%; margin-left:-4px; border-bottom-color:#0a9}
+.label-arrow-b{bottom:-8px; left:50%; margin-left:-4px; border-top-color:#0a9}
+

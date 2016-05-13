@@ -18,19 +18,29 @@
     {% if attribute(blog.category, 0) %}
     <span class="cat-links">
         <span class="screen-reader-text">Categories </span>
-        {% for category in blog.category %}  
-           <a href="{{ category.url }}" rel="category">{{ category.name }}</a>
+        {% for category in blog.category %}
+        <!-- 绿色标签 -->
+        <label class="label">
+           <a href="{{ category.url }}" rel="category" class="" style="color: whitesmoke;">{{ category.name }}<i class="label-arrow label-arrow-l"></i></a>
+            </label>
+        <!-- 黄色标签 -->
+        <!--<a href="{{ category.url }}" rel="category" class="tag">{{ category.name }}</a>-->
         {% endfor %}
     </span>
     {% endif %}
     
     
     {% if attribute(blog.tags, 0) %}
-    <span class="tags-links">
+    <span class="glyphicon glyphicon-tags" style="font-size: 8px">
     	
         <span class="screen-reader-text">Tags </span>
-        {% for tag in blog.tags %}  
-           <a href="{{ tag.url }}" rel="tag">{{ tag.name }}</a>
+        {% for tag in blog.tags %}
+        <!-- 绿色标签 -->
+           <label class="label" >
+               <a href="{{ tag.url }}" rel="tag" style="color: whitesmoke;">{{ tag.name }}<i class="label-arrow label-arrow-l"></i> </a>
+           </label>
+        <!-- 黄色标签 -->
+        <!--<a href="{{ tag.url }}" rel="tag" class="tag">{{ tag.name }}</a>-->
         {% endfor %}
     </span>
     {% endif %}
