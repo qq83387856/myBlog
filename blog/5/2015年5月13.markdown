@@ -2,7 +2,7 @@
 author: 小莫
 date: 2016-05-13
 title: 使用nodejs搭建一个简易的即时聊天软件
-tags: node
+tags: nodejs
 category: nodejs之net模块
 status: publish
 summary: 最近在学习node，跟着书上的例子写的一个基于net模块的tcp服务器，感觉挺有意思在此分享一下。
