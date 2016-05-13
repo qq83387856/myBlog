@@ -20,7 +20,7 @@ summary: 最近在学习node，跟着书上的例子写的一个基于net模块�
   chatServer.on('connection', function(client) {
   //给客户端反馈
   client.name = client.remoteAddress+':'+client.remotePort;
-  client.write('Hi!'+client.name+',您己成功连接服务器，可以正常通讯了\n');
+  client.write('Hi!'+client.name+',您己成功开启服务器，可以正常通讯了\n');
   //将客户端放到客户端列表中
   clientList.push(client);
   //监听客户端信信息并给出反馈
