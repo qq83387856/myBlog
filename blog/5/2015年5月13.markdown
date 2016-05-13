@@ -1,0 +1,68 @@
+<!--
+author: 小莫
+date: 2016-05-13
+title: 使用nodejs搭建一个简易的即时聊天软件
+tags: node
+category: nodejs之net模块
+status: publish
+summary: 最近在学习node，跟着书上的例子写的一个基于net模块的tcp服务器，感觉挺有意思在此分享一下。
+-->
+## 一、搭建简易的服务器##
+`vim server.js`
+```
+  //引入node的net模块
+  var net = require('net')
+  //创建一个服务器
+  var chatServer = net.createServer();
+  //定义一个客户端列表
+  var clientList = [];
+  //监听连接...
+  chatServer.on('connection', function(client) {
+  //给客户端反馈
+  client.name = client.remoteAddress+':'+client.remotePort;
+  client.write('Hi!'+client.name+',您己成功连接服务器，可以正常通讯了\n');
+  //将客户端放到客户端列表中
+  clientList.push(client);
+  //监听客户端信信息并给出反馈
+  client.on('data', function(data) {
+  // 把数据发送给所有客户端
+      broadcast(data,client);
+    });
+
+  //监听离线事件
+  client.on('end',function(){
+    clientList.splice(clientList.indexOf(client),1);
+    client.write('用户:'+client.name+'退出了当前服务\n');
+    })
+  })
+
+  /**
+  *  广播消息
+  **/
+  function broadcast(message,client){
+    for(var i=0;i<clientList.length;i++) {
+        if(clientList[i]!==client[i]){
+            clientList[i].write(client.name+'说:'+message);
+        }
+    }
+  }
+```
+开启服务器
+`node server.js`   
+`chatServer is running at port 9000...`  
+此时服务己经成功开启
+
+## 二、客户端连接##
+格式： `telnet host port`  
+例如我在本地再开启一个shell窗口  
+ `telnet localhost 9000`  
+ Hi!127.0.0.1:43358,您己成功连接服务器，可以正常通讯了..
+
+ ##三、测试效果##
+1. 开启服务器
+2. 客户端连接
+3. 测试通讯  
+下面是gif效果图
+![tcp在线聊天服务器](./../img/tcpServer.gif)
+如果觉得图太小也可以手动打开查看大图  
+[tcp在线聊天服务器](./../img/tcpServer.gif)
