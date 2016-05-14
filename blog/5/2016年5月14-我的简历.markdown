@@ -8,4 +8,4 @@ status: publish
 summary: 我的简历
 -->
 
-[求职简历](./../img/aboutMe.doc)
+[点击下载简历](./../img/aboutMe.doc)
