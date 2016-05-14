@@ -33,7 +33,7 @@ webpack和requirejs browserify一样，都是一款打包工具，那为什么�
  `npm init -y`  
  c.安装工具(如果你没安装taobao源，把cnpm换成npm)
  `cnpm install --save-dev webpack webpack-dev-server`  
-说明:webpack是核心文件、wepback-dev-server是类http-server的web启动工具，建议juanju安装一下这个server  
+说明:webpack是核心文件、wepback-dev-server是类http-server的web启动工具，建议安装一下这个server  
 d.新建配置文件  (名字一定不能换)
 `touch webpack.config.js`  
 e. 配置webpack
