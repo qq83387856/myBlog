@@ -178,6 +178,6 @@ b.然后访问 http://locahost:8080 就可以看到效果了
 编译好要使用的只有`index.html`和`dist/bundle.js`两个文件
 2. git中会展示一个5个文件的内容
 3. 演示一下效果
-![webpack的简单使用]()    
+![webpack的简单使用](1)
 如果觉得图小可以点击下面链接查看大图  
-[webpack的简单使用]()
+[webpack的简单使用](1)
