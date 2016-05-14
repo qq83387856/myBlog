@@ -56,8 +56,8 @@ e. 配置webpack
 
 ##三、写一个小测试 ##
 a. 新建入口文件  
-`touch index.js`
-  document.write('Hello world');  
+`touch index.js`  
+  `document.write('Hello world');`  
   说明:往html写入一句话 `Hello world`  
 b. 新建一个css  
 `touch style.css`  
