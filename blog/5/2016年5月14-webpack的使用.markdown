@@ -26,7 +26,7 @@ webpack和requirejs browserify一样，都是一款打包工具，那为什么�
 ##二、环境搭建##
 1. IDE推荐  
  `IDEA`、`webstrom`、`sublime`、`atom`  都是很不错的编辑工具，`idea`大而全，`webstrom`是`idea`的简化版、`sublime`轻量但不失稳重、atom新兴但不失典雅，东西不分上下，重在自己喜欢。找一个自己顺手的就好，顺便一提，我现在主要使用`IDEA`、辅助`atom`。因为我是一个`java`党啊，少不了`IDEA`，`atom`的界面是我最喜欢的。
- 2. 环境搭建  
+ 2. 开始建项目写配置  
  a.新建项目
  `mkdir webpack-study && cd webpack-study`
  b.初始化环境
@@ -40,9 +40,9 @@ e. 配置webpack
 
 ```
   module.exprots={
-    entry:'index.js',
+    entry:'./index.js',
     output:{
-      path:__dirname,
+      path:__dirname+'/dist',
       filename:'bundle.js'
     }
 
@@ -54,7 +54,7 @@ e. 配置webpack
 入口文件:`entry` 有几个页面就有几个entry 如果是单页面（spa)，一个entry就够了  
 输出 `output`,`path`是输出路径,`__dirname`是nodejs的全局变量，表示当前目录, `filename`，打包后的文件名
 
-3. 写一个小测试
+##三、写一个小测试 ##
 a. 新建入口文件  
 `touch index.js`
   document.write('Hello world');  
@@ -75,7 +75,7 @@ b.打开`webpack.config.js`
   module:{
     loaders:[
     {
-      test:/\.css*/,
+      test:/\.css$/,
       loaders:['style-loader','css-loader']
       }
   ]
@@ -89,3 +89,67 @@ b.打开`webpack.config.js`
 loaders指定采用哪个loader,注意它是从右往左执行，所以这里先执行css-loader  
 `css-loader`处理css的一些url，包括相对的绝对的之类的东西  
 `style-loader` 是将css文件采用js动态写入html页面
+c.使用css  
+打开`index.js`  (因为我们这里没有用babel,所以就用es5来写)
+`require('./style.css');`
+
+## 四、查看效果##
+我们现在可以使用`webpack-dev-server`这个东西了
+如果你己经全局安装了(`cnpm install -g webpack-dev-server`),直接命令`webpack-dev-server`就可以开起来了，当然你也可以在package.json文件里面添加script，文件如下
+
+```
+{
+"name": "webpack-study",
+"version": "1.0.0",
+"description": "",
+"main": "index.js",
+"scripts": {
+"start":"webpack-dev-server --progcess",
+"build":"webpack --progress",
+"test": "echo \"Error: no test specified\" && exit 1"
+},
+"keywords": [],
+"author": "",
+"license": "ISC",
+"devDependencies": {
+"css-loader": "^0.23.1",
+"style-loader": "^0.13.1",
+"webpack": "^1.13.0",
+"webpack-dev-server": "^1.14.1"
+  }
+}
+
+```
+
+这里我们就可以使用`npm run build`来编译，使用`npm run start`来开启服务器  
+
+```
+➜  webpack-study git:(master) ✗ npm run build
+
+> webpack-study@1.0.0 build /Users/xiaomo/workspace/webpack-study
+> webpack --progress
+Hash: 11ffef2911f2436a3948
+Version: webpack 1.13.0
+Time: 64ms
+    Asset     Size  Chunks             Chunk Names
+bundle.js  1.42 kB       0  [emitted]  main
+   [0] ./index.js 30 bytes {0} [built]
+   ➜  webpack-study git:(master) ✗ npm run start
+
+   > webpack-study@1.0.0 start /Users/xiaomo/workspace/webpack-study
+   > webpack-dev-server --progcess
+
+   http://localhost:8080/webpack-dev-server/
+   webpack result is served from /
+   content is served from /Users/xiaomo/workspace/webpack-study
+   Hash: 11ffef2911f2436a3948
+   Version: webpack 1.13.0
+   Time: 80ms
+       Asset     Size  Chunks             Chunk Names
+   bundle.js  1.42 kB       0  [emitted]  main
+   chunk    {0} bundle.js (main) 30 bytes [rendered]
+       [0] ./index.js 30 bytes {0} [built]
+   webpack: bundle is now VALID.
+
+
+```
