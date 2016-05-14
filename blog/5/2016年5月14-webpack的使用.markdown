@@ -1,0 +1,16 @@
+<!--
+author: 小莫
+date: 2016-05-14
+title: wepback的使用
+tags: webback
+category: 自动化构建工具
+status: publish
+summary: 说到自动化构建，你想到了什么？基于AMD的requirejs？还是基于commoJS的browserify？
+他们都在各自的领域或者说时代发挥了很重要的作用。但是时代的变迁，webpack成了现在的佼佼者，我们不知道
+什么时候wepback也会被取代，但是现在我们必须要掌握。我不担心我学完webpack新东西来了就没用了，相反的
+我很期待也很高兴有新的东西来取代webpack，因为如果能取代，必然是更好的东西。如果是更好的，那又为什么
+要拒绝呢？活在当下，认真学习。
+-->
+
+#今日分享
+###webpack的使用
