@@ -2,7 +2,7 @@
 author: 小莫
 date: 2016-05-14
 title: 我的个人简历
-tags: webback
+tags: 我的生活
 category: 生活随笔
 status: publish
 summary: 我的简历
