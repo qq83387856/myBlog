@@ -28,12 +28,12 @@ webpack和requirejs browserify一样，都是一款打包工具，那为什么�
  `IDEA`、`webstrom`、`sublime`、`atom`  都是很不错的编辑工具，`idea`大而全，`webstrom`是`idea`的简化版、`sublime`轻量但不失稳重、atom新兴但不失典雅，东西不分上下，重在自己喜欢。找一个自己顺手的就好，顺便一提，我现在主要使用`IDEA`、辅助`atom`。因为我是一个`java`党啊，少不了`IDEA`，`atom`的界面是我最喜欢的。
  2. 开始建项目写配置  
  a.新建项目
- `mkdir webpack-study && cd webpack-study`
+ `mkdir webpack-study && cd webpack-study`  
  b.初始化环境
  `npm init -y`  
- c.安装工具(如果你没安装taobao源，把cnpm换成npm)  
+ c.安装工具(如果你没安装taobao源，把cnpm换成npm)
  `cnpm install --save-dev webpack webpack-dev-server`  
-说明:webpack是核心文件、wepback-dev-server是类http-server的web启动工具，建议juanju安装一下这个server
+说明:webpack是核心文件、wepback-dev-server是类http-server的web启动工具，建议juanju安装一下这个server  
 d.新建配置文件  (名字一定不能换)
 `touch webpack.config.js`  
 e. 配置webpack
