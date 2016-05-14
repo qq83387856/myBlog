@@ -25,7 +25,7 @@ webpack和requirejs browserify一样，都是一款打包工具，那为什么�
 
 ##二、环境搭建##
 1. IDE推荐  
- `IDEA`、`webstrom`、`sublime`、`atom`  都是很不错的编辑工具，`idea`大而全，`webstrom`是`idea`的简化版、`sublime`轻量但不失稳重、atom新兴但不失典雅，东西不分上下，重在自己喜欢。找一个自己顺手的就好，顺便一提，我现在主要使用`IDEA`、辅助`atom`。因为我是一个`java`党啊，少不了`IDEA`，`atom`的界面是我最喜欢的。
+ `IDEA`、`webstrom`、`sublime`、`atom`  都是很不错的编辑工具，`idea`大而全，`webstrom`是`idea`的简化版、`sublime`轻量但不失稳重、`atom`新兴但不失典雅，东西不分上下，重在自己喜欢。找一个自己顺手的就好，顺便一提，我现在主要使用`IDEA`、辅助`atom`。因为我是一个`java`党啊，少不了`IDEA`，`atom`的界面是我最喜欢的。
  2. 开始建项目写配置  
  a.新建项目
  `mkdir webpack-study && cd webpack-study`  
@@ -178,6 +178,6 @@ b.然后访问 http://locahost:8080 就可以看到效果了
 编译好要使用的只有`index.html`和`dist/bundle.js`两个文件
 2. git中会展示一个5个文件的内容
 3. 演示一下效果
-![webpack的简单使用](1)   
+![webpack的简单使用](1)
 如果觉得图小可以点击下面链接查看大图  
 [webpack的简单使用](1)
