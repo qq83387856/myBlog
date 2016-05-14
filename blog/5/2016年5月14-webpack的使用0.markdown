@@ -1,0 +1,11 @@
+<!--
+author: 小莫
+date: 2016-05-14
+title: 我的个人简历
+tags: webback
+category: 生活随笔
+status: publish
+summary: 我的简历
+-->
+
+[求职简历](./img/胡朋的简历.doc)
