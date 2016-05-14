@@ -66,6 +66,24 @@ b. 新建一个css
     background-color:pink;
   }
 ```
+
+c.新建一个html  
+`touch index.html`  
+写下以下内容  
+
+```
+  <!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>hello webpack</title>
+    <script src="dist/bundle.js"></script>
+  </head>
+  <body>
+  </body>
+  </html>
+```
+
 4.webpack的重头戏要来了 那就是loaders，wepback的一大特色就是可以将一些浏览器不能原生支持的文件通过loaders编译成浏览器可以支持的文件
 a.安装loaders  
 `cnpm install style-loader css-loader `  
@@ -151,5 +169,15 @@ bundle.js  1.42 kB       0  [emitted]  main
        [0] ./index.js 30 bytes {0} [built]
    webpack: bundle is now VALID.
 
-
 ```
+
+b.然后访问 http://locahost:8080 就可以看到效果了
+
+##动态效果展示和总结##
+1. 总共有`webpack.config.ks`、`index.js`、`index.html`、`style.css`、`package.json`5个文件，
+编译好要使用的只有`index.html`和`dist/bundle.js`两个文件
+2. git中会展示一个5个文件的内容
+3. 演示一下效果
+![webpack的简单使用]()    
+如果觉得图小可以点击下面链接查看大图  
+[webpack的简单使用]()
