@@ -206,13 +206,15 @@ new webpack.ProvidePlugin({
 new webpack.NoErrorsPlugin(),
 new webpack.optimize.DedupePlugin(),
 new webpack.optimize.UglifyJsPlugin(),
+new webpack.optimize.CommonsChunkPlugin('common.js')
 ```
 
-作用: 和上面4个一一对应  
+作用: 和上面5个一一对应  
 1. 把一些需要的东西绑定到window上，暴露出来 成为全局变量
 2. 不显示错误插件
 3. 具体不是太清楚，先记录着
 4. 丑化js 混淆代码而用
+5. 提取公共代码的插件
 
 ## 二、一个完整的栗子##
 ```
