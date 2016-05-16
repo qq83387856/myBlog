@@ -1,9 +1,9 @@
 <!--
 author: 小莫
 date: 2016-05-17
-title: webpack进阶
+title: webpack进阶之插件篇
 tags: webpack
-category: webpack
+category: webpack插件
 status: publish
 summary: 上一篇博客讲解了webpack环境的基本，这一篇讲解一些更深入的内容和开发技巧。基本环境搭建就不展开讲了
 -->
@@ -11,7 +11,8 @@ summary: 上一篇博客讲解了webpack环境的基本，这一篇讲解一些�
 ## 一、插件篇##
 * autoprefixer  
 
->官方是这样说的：`Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website`，也就是说它是一个自动检测兼容性给各个浏览器加个内核前缀的插件。  
+>官方是这样说的：`Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website`
+，也就是说它是一个自动检测兼容性给各个浏览器加个内核前缀的插件。  
 
 举个栗子：最新的弹性盒模型flux
 实际代码：
