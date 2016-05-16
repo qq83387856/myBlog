@@ -1,7 +1,7 @@
 <!--
 author: 小莫
 date: 2016-05-14
-title: wepback使用之插件篇
+title: wepback使用之基础篇
 tags: webback
 category: 自动化构建工具
 status: publish
