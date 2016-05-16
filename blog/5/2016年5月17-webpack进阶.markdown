@@ -184,7 +184,7 @@ new CopyWebpackPlugin([{
 
 api  
 | 参数        | 作用           | 其他说明  |
-| :-----------: |:--------:  | :---:|
+| :-----------: |:--------:  | :---:|:---:|
 | from      | 定义要拷贝的源目录 | from: __dirname + '/src/public' |
 | to      | 定义要烤盘膛的目标目录      |   from: __dirname + '/dist' |
 | toType | `file` 或者 `dir`     |    可选，默认是文件 |
