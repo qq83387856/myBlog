@@ -75,7 +75,8 @@ module.exports={
   }
 ```
 
-作用:它会在dist目录下自动生成一个index.html
+>作用:它会在dist目录下自动生成一个index.html
+
 ```
 <!DOCTYPE html>
 <html>
@@ -133,7 +134,7 @@ module.exports={
 </html>
 ```
 
-作用：  
+作用：   
 title: 设置title的名字   
 filename: 设置这个html的文件名   
 template:要使用的模块的路径  
@@ -180,7 +181,7 @@ new CopyWebpackPlugin([{
 }]),
 ```
 
-作用：把public 里面的内容全部拷贝到编译目录
+>作用：把public 里面的内容全部拷贝到编译目录
 
 | 参数        | 作用           | 其他说明  |
 | :-----------: |:--------:  | :---:|
@@ -206,7 +207,7 @@ new webpack.optimize.DedupePlugin(),
 new webpack.optimize.UglifyJsPlugin(),
 ```
 
-作用: 和上面4个一一对应
+作用: 和上面4个一一对应  
 1. 把一些需要的东西绑定到window上，暴露出来 成为全局变量
 2. 不显示错误插件
 3. 具体不是太清楚，先记录着
@@ -349,5 +350,4 @@ if (isTest) {
 }
 ```
 
-作用:  
-使用source-map可以在debug的时候看到源代码，方便 查错
+>作用:  使用source-map可以在debug的时候看到源代码，方便 查错
