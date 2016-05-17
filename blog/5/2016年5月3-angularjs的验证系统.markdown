@@ -1,52 +1,52 @@
 <!--
 author: 小莫
-date: 2016-05-18
-title: webpack相关命令参数
-tags: webpack
-category: webpack
+date: 2016-05-11
+title: angularjs键盘事件
+tags: angularjs
+category: angulrjs键盘事件
 status: publish
-summary: 使用webpack的同学，你真的熟练应用webpack么？
+summary: 使用angularjs的键盘事件来增强用户体验。
 -->
 
-##一、基础参数##
-
+#今日分享
+###绑定键盘事件（尤其注意：不能用a标签，不然会失效）
+>推荐button
+* 方法一：ng内置指令
 ```
-webpack --config XXX.js   //使用另一份配置文件（比如webpack.config2.js）来打包
-webpack --watch   //监听变动并自动打包
-webpack 执行一次开发时的编译
-webpack -p 执行一次生成环境的编译（压缩）
-webpack --watch 在开发时持续监控增量编译（很快）
-webpack -d 让他生成SourceMaps
-webpack --progress 显示编译进度
-webpack --colors 显示静态资源的颜色
-webpack --sort-modules-by, --sort-chunks-by, --sort-assets-by 将modules/chunks/assets进行列表排序
-webpack --display-chunks 展示编译后的分块
-webpack --display-reasons 显示更多引用模块原因
-webapck --display-error-details 显示更多报错信息
+<button ng-click="login()" ng-keypress="todoSomething($event)" class="btn btn-success btn-lg" ng-disabled="loginForm.$invalid">
+    登录
+</button>
 ```
-
-## 二、使用babel##  
-`npm install babel-loader babel-core babel-preset-es2015 --save-dev`   
-创建babel的配置文件.babelrc 内容如下：
-
-```{
-  "presets": ["es2015"]
-}
-修改webpack.config.js文件，指定loader处理js文件
-
-module.exports = {
-  entry: './entry.js',
-  output: {
-    path: __dirname,     
-    filename: 'bundle.js'
-  },
-  module: {     
-    loaders: [
-      {test: /\.js$/, loader: 'babel'},
-      {test: /\.css$/, loader: 'style!css'}
-    ]
-  }
-};
+>说明：在对应的控制器中的$scope上绑定一个todoSomething方法
 ```
+    $scope.todoSomething=function($event){
+        if($event.keyCode==13){//回车
+            login();
+        }
+    }
+```
+* 方法二：自定义指令
+> html
+```
+<button ng-click="login()" ng-enter="login()" class="btn btn-success btn-lg" ng-disabled="loginForm.$invalid">
+    登录
+</button>
+```
+>指令
+```
+myApp.directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 13) {
+                    scope.$apply(function () {
+                        scope.$eval(attrs.ngEnter);
+                    });
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+```
+###### 总结：两种方法都能实现敲回车登录的功能，不过推荐指令的方式，对$scope的污染比较低
 
->内容摘自 [Web开发笔记](https://www.magentonotes.com/)
+>参考文档：[angularjs学习笔记—事件指令](https://segmentfault.com/a/1190000002634554#articleHeader8)
