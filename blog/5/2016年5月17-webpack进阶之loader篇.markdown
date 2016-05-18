@@ -15,6 +15,8 @@ summary: webpack的loaders是一大特色，也是很重要的一部分。这遍
 * less-loader
 * postcss-loader
 
+`cnpm install --save -dev css-loader style-loader sass-loader less-loader postcss-loader`  
+
 栗子:
 
 ```
@@ -31,8 +33,20 @@ module: {
 * babel-loader
 * jsx-loader
 
-栗子
+`cnpm install --save-dev babel-core
+babel-preset-es2015  babel-loader jsx-loader`
 
+栗子  
+
+新建一个名字.babelrc的文件
+
+```
+{
+  "presets": ["es2015"]
+}
+```
+
+//webpack.config.js
 ```
 module: {
   loaders: [
@@ -45,6 +59,8 @@ module: {
 ##三、loaders之 图片处理##
 * url-loader
 
+`cnpm install --save-dev url-loadr`
+
 ```
 module: {
   loaders: [
@@ -55,6 +71,8 @@ module: {
 
 ##四、loaders之文件处理##
 * file-loader
+
+`cnpm install --save-dev file-loader`
 
 ```
 module: {
@@ -71,6 +89,8 @@ module: {
 ##五、loaders之json处理##
 * json-loader
 
+`cnpm install --save-dev json-loader`
+
 ```
 module: {
   loaders: [
@@ -81,6 +101,8 @@ module: {
 
 ##六、loaders之html处理##
 * raw-loader
+
+`cnpm install --save-dev raw-loader`
 
 ```
 module: {
