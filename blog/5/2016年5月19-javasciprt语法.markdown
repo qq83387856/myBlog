@@ -38,16 +38,12 @@ summary: 一直对javscript抱有敬畏的态度，也没有一直深入学习�
 5. `number`   
 `Number()`          true=>1 false=>0   null=>0 undefined=>NaN   
 `Number.MAX_VALUE`  最大值    
-`Number.MIN_VALUE`  最小值   
-`NaN`  它是一个特例，不与任何值相等包括自己  
-
-```
-parseInt() //可以查找字符串中的数字并转换
-parseFloat() //可以查找字符串中的数字并转换
-inFinite() //是否在最大值和最小值之间
-```
-
-说明：它能够识别科学计数法 比如 2.15e5 => 215000
+`Number.MIN_VALUE`  最小值    
+`NaN`  它是一个特例，不与任何值相等包括自己    
+`parseInt()` //可以查找字符串中的数字并转换   
+`parseFloat()` //可以查找字符串中的数字并转换   
+`inFinite()` //是否在最大值和最小值之间   
+说明：它能够识别科学计数法 比如 2.15e5 => 215000   
 
 6. `object`  
 `constructor`  构造函数   
@@ -88,3 +84,5 @@ inFinite() //是否在最大值和最小值之间
 
 `typeof xxx`
 // 返回数据类型
+
+j
