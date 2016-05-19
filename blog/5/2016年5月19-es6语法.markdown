@@ -1,7 +1,7 @@
 <!--
 author: 小莫
 date: 2016-05-19
-title: es6语语解析
+title: es6语法快速上手
 tags: es6
 category: es6
 status: publish
