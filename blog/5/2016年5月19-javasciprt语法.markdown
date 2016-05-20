@@ -279,6 +279,7 @@ function test(){
 ```
 
 `this`在javascript中用法比较特殊,它指向它的调用者
+
 ```
   var color='green';
   function sayColor(){
@@ -292,6 +293,7 @@ function test(){
 ```
 
 `protoType` 原型链    
+
 ```
   function sum (num1,num2){
     return num1+num2;
