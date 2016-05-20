@@ -96,7 +96,7 @@ summary: 一直对javscript抱有敬畏的态度，也没有一直深入学习�
 `typeof xxx`
 // 返回数据类型
 
-##引用类型##
+##六、引用类型##
 
 1. `object`  
 声明对象的方法  
@@ -316,3 +316,102 @@ sayColor(); //green
 `decodeURICopmonent()` //decode字符串   
 `eval(express)` //解析字符串表达式   
 `eval("console.log('我是被解析的表达式')")`   
+
+6. `Math`    
+`Math.E` //e   
+`Math.LN10` //10的自然对数  
+`Math.LOG10E` //以10为底e的对数   
+`Math.PI`  //PI  
+`Math.SQRT2` //2的平方根   
+`Math.SQRT1_2`  // 1/2的平方根   
+
+方法：
+`Math.min(Array)`    
+`Math.max(Array)`    
+`Math.ceil(parm)` //向上取整  
+`Math.floor(parm)` //向下取整   
+`Math.round(parm)` //标准的四舍五入   
+`Math.random()`  // 0-1之间的数   
+`Math.abs(parm)` //绝对值
+
+##七、面向对象的编程方法##  
+
+```
+  var person = {
+    name:'xiaomo',
+    age:25，
+    sayHello:function(){
+      console.log(this.name);
+    }
+  }
+```
+
+工厂模式
+
+```
+  function createPerson(name,age,job){
+      var o = new Object();
+      o.name = name;
+      o.age= age;
+      o.job =job;
+      o.sayName=function(){
+        console.log(this.name);
+      }
+      return o;
+  }
+  var person1 = createPerson('xiaomo',25,'programer');
+  var person2 = createPerson('xiaoming',20,'it');
+```
+
+构造函数(不用显式的创建对象，不用返回值，直接把属性赋给this)
+
+```
+  function Person(name,age,job){
+    this.name = name;
+    this.age = age,
+    this.job = job;
+    this.sayName = function(){
+      console.log(this.name);
+    }
+  }
+
+var person1 = new Person('xiaomo',25,'programer');
+var person2 = new Person('xiaoming',20,'it');
+```
+
+判断类型 `instanceof`  
+
+```
+  person1 instanceof Object //true
+  person1 instanceof Person //true
+```
+
+原型模式    
+
+```
+  function Person(){}
+  //实际上隐式的创建一个构造函数constructor
+  Person.prototype.name='xiaomo';
+  Person.prototype.age=25;
+  Person.prototype.job='programmer';
+  Person.prototype.sayName=function(){
+    console.log(this.name);
+  }
+
+  //当前也可以这样
+  Person.prototype={
+    name='xiaomo';
+    age=25;
+    job='programmer';
+    sayName=function(){
+      console.log(this.name);
+    }
+  }
+
+  var person1 = new Person();
+  Person.prototype.isPrototypeOf(person1); //true
+  Object.getPrototypeOf(person1.name); //xiaomo
+  person1.hasOwnProperty('name') //false 存在于protoType中，不存在于实例中
+  'name' in person1 //true  虽然实例中没有,但是它的原型链有,所以返回true
+  Object.keys(person1) //会枚举出实例中所有的属性
+```
