@@ -251,11 +251,15 @@ function test(){
   console.log('这是一个方法');
 }
 ```
-但如果是匿名方法
-```
-  var test = function(){
 
-  }
+但如果是立即执行的函数则不行
+
+```
+(
+  function test(){
+
+  }()
+  )
 ```
 
 方法有两个特殊的内部属性和两个非继承来的方法 `call()`、`apply()`,以及其他方法 `toString()、valueOf()`    
@@ -309,4 +313,3 @@ function test(){
 `decodeURICopmonent()` //decode字符串   
 `eval(express)` //解析字符串表达式   
 `eval("console.log('我是被解析的表达式')")`   
- 
