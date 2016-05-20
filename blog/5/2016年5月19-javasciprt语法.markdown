@@ -200,7 +200,7 @@ fn=(prev,cur,index,array){//前一个值、当前值、索引、数组
 `toLocaleDateString()`   特定时区的星期、日、月、年
 `toLocaleTimeString()`   特定时区的时、分、秒、时间    
 
-时间格关   
+时间格式   
 ```
 var date = new Date();
 var time = date.getTime() //当前时间的时间戳
@@ -215,6 +215,7 @@ var mill = date.getMilliSeconds() //毫秒
 ```
 
 4. 正则 RegExp类型   
+
 ```
 var re = new RegExp('pattern');
 re.test(parm);
@@ -281,15 +282,15 @@ function test(){
 `this`在javascript中用法比较特殊,它指向它的调用者
 
 ```
-  var color='green';
-  function sayColor(){
-      console.log(this.color);
-    }
-  var o = {
-    color='pink';
+var color='green';
+function sayColor(){
+    console.log(this.color);
   }
-  o.sayColor(); //pink
-  sayColor(); //green
+var o = {
+  color='pink';
+}
+o.sayColor(); //pink
+sayColor(); //green
 ```
 
 `protoType` 原型链    
