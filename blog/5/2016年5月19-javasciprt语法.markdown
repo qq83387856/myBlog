@@ -32,8 +32,20 @@ summary: 一直对javscript抱有敬畏的态度，也没有一直深入学习�
 不管传入什么都会原样返回,但如果是`function`,会执行该方法并返回`undefined`    
 `toString(参数,进制)`   
 `toUpperCase()`  
-`toLowerCase()`  
-它只有length属性  
+`toLowerCase()`   
+`substring(parm1,parm2)`     
+`substr()`   
+`charAt(1)`    
+`charCodeAt(2)`    
+`concat()`  
+`slice()`  
+`indexof()`  
+`lastIndexOf`  
+`trim()`  
+`search(pattern)`  //返回索引   
+`replcae('原','新')` //第一个参数支持正则    第二个参数也可以是一个function     
+`splice(',')`    //支持正则，支持指定长度    
+它只有length属性   
 
 5. `number`   
 `Number()`          true=>1 false=>0   null=>0 undefined=>NaN   
@@ -43,6 +55,7 @@ summary: 一直对javscript抱有敬畏的态度，也没有一直深入学习�
 `parseInt()` //可以查找字符串中的数字并转换   
 `parseFloat()` //可以查找字符串中的数字并转换   
 `inFinite()` //是否在最大值和最小值之间   
+`toFixed(小数点位数)`
 说明：它能够识别科学计数法 比如 2.15e5 => 215000   
 
 6. `object`  
@@ -200,3 +213,100 @@ var min = date.getMinitues(); //0
 var sec = date.getSeconds() //秒
 var mill = date.getMilliSeconds() //毫秒
 ```
+
+4. 正则 RegExp类型   
+```
+var re = new RegExp('pattern');
+re.test(parm);
+
+// exec 返回匹配的结果
+var test = 'abcdef.js';
+var pattern = /\.js$/
+var matches = parrten.exec(test);
+console.log(matches); // '.js' ,index:6 input:'abcdef.js'
+
+//test 返回true/false
+var text = 'abcdef.js';
+var pattern = /\.js$/
+pattern.test(text); // true
+```
+
+5. 方法　function     
+方法没有重载,如果是同名,不管参数个数是不是相同,后面定义的方法都会覆盖前面的方法  
+每个方法都包含两个属性:`length`(参数个数)和`protoType`(原型链)   
+```
+  function test(a,b){
+    return a+b;
+  }
+  function test(a){
+    return a;
+  }
+  test(1)    //1
+  test(1,2)  //1
+```
+你可以不按正常顺序执行方法,因为在执行的时候 function都会被提前    
+```
+test();
+function test(){
+  console.log('这是一个方法');
+}
+```
+但如果是匿名方法
+```
+  var test = function(){
+
+  }
+```
+
+方法有两个特殊的内部属性和两个非继承来的方法 `call()`、`apply()`,以及其他方法 `toString()、valueOf()`    
+`arguments`和`this`   
+`arguments`是类数组,保存着参数。它有`arguments.callee()`方法   
+```
+  function factorial(num){
+      if(num<=1){
+        return 1;
+      } else {
+        return num * arguments.callee(num-1);
+      }
+  }
+
+  factorial(5); // 5! 1*2*3*4*5
+
+```
+
+`this`在javascript中用法比较特殊,它指向它的调用者
+```
+  var color='green';
+  function sayColor(){
+      console.log(this.color);
+    }
+  var o = {
+    color='pink';
+  }
+  o.sayColor(); //pink
+  sayColor(); //green
+```
+
+`protoType` 原型链    
+```
+  function sum (num1,num2){
+    return num1+num2;
+  }
+  // call 参数1:运行函数的作用域 参数2 agruments或者Array
+  function callSum1(num1,num2){
+    return sum.apply(this,arguments);
+  }
+  function callSum2(num1,num2){
+    return sum.apply(this,[num1,num2])
+  }
+  // apply 参数1：运行函数的作用域 其他参数:就是把apply中的数组拆开
+  function callSum2(num1,num2){
+    return sum.apply(this,num1,num2)
+  }
+```
+
+`encodeURIComponent()` //encode字符串          
+`decodeURICopmonent()` //decode字符串   
+`eval(express)` //解析字符串表达式   
+`eval("console.log('我是被解析的表达式')")`   
+ 
