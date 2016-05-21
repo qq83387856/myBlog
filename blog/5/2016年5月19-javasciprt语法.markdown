@@ -9,8 +9,30 @@ summary: 一直对javscript抱有敬畏的态度，也没有一直深入学习�
 -->
 
 ##一些不同##
-1. javscript没有块级作用域 于是es6中有了let和var
+1. javscript没有块级作用域 于是es6中有了let和var    
+模拟js的块级作用域    
+
+```
+  function outputNumbers(count){
+    (function(){
+      for(var i=0;i<count;i++){
+        console.log(i);
+      }
+      })();
+  }
+  console.log(i) //会报错
+```
+
 2. javascipt中this用法不同,它指向调用它的那个对象
+3. 闭包是指有权访问另一个函数作用域中的变量的函数。
+
+```
+  function createAFunction(){
+    return function(){
+      return '这是一个闭包';
+    }
+  }
+```
 
 ##一、基本数据类型##  
 `undefined`、`null`、`boolean`、`string`、`number` 、`object`、`function`  
