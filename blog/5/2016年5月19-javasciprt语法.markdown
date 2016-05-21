@@ -538,3 +538,132 @@ function hasPlugin(name){
   history.go('xiaomo.info')//跳转到最近访问过的该页面
   history.length==0 //表示这是用户打开浏览器的第一个页面
 ```
+
+##十、表单##
+
+1. 表单属性
+
+```
+  acceptCharset 服务器能够处理的字符集
+  action 接受请求的url
+  elements 表单所有控件的集合
+  enctype 请求的编码类型
+  length 表单中控件的数量
+  method get/post
+  name 表单的名字
+  reset() 重置
+  submit() 提交
+  target
+```
+
+`document.forms` 可以取到表单的所有控件    
+
+
+2. 控件
+
+```
+  disabled 当前字段是否禁用
+  form 指向当前字段所属表单的指针:只读
+  name 当前字段的名字
+  readOnly 当前字段只读
+  tabIndex tab切换的序号
+  type 当前字段的类型
+  value 当前字段提交给服务器的值
+```
+
+修改控件的值
+
+```
+  var input = document.getElementById('name');
+  name.value='xiaomo'
+  name.focus(); //把焦点设置到当前字段
+  //在控件中加入 autofocus="focus" 是一样的效果
+```
+
+选择文本   
+`element.select()`     
+
+取得选中的文本
+```
+    function alertText(username){
+      var username = document.getElementById('username');
+      alert(getSelectText(username));
+      }
+    function getSelectText(textbox){
+      return textbox.value.substring(textbox.selectionStart,textbox.selectionEnd);
+    }
+
+    // html
+  <input type="input" id="username" value="我是测试文本，看一下能不能被选中">
+  <input type="button" value="确定" onclick="alertText()">
+```
+
+3. 剪贴板事件
+
+```
+  beforecopy
+  copy
+  cut
+  beforepaste
+  paste
+
+  //写一个公用方
+  var EventUtil = {
+
+    getClipboardText:function(event){
+      var clipboardData  = (event.clipboardData || window.clipboardData);
+      return clipboardData.getData('text');
+    }
+
+    setClipboardText:function(event,value){
+      if(event.clipboardData){
+        return event.clipboardData.setData("text/plain",value);
+      } else if (window.clipboardData){
+        return window.clipboardData.setData("txt",value);
+      }
+    }
+
+  }
+
+  EventUtil.addHander(txtbox,"paste",function(event)){
+    event  = EventUtil.getEvent(event);
+    var text = EventUtil.getClipboardText(event);
+    if(!/^\d*$/.test(text)){
+      EventUtil.preventDefault(event);
+    }
+  }
+
+```
+
+[EventUtil](http://www.cnblogs.com/hykun/p/EventUtil.html)
+
+自动切换焦点
+
+```
+  (function(){
+    function tabForward(event){
+      event = EventUtil.getEvent(event);
+      var target = EventUtil.getTarget(event);
+      if(target.value.length = target.maxLength){
+        var form = target.form;
+        for( var i =0; len = form.elements.length;i<len;i++){
+          if(form.elements[i]==target){
+            if(form.elements[i+1]){
+              form.elements[i+1].focus();
+            }
+            return;
+          }
+        }
+      }
+    }
+    var text1 = document.getElementById('text1');
+    var text2 = document.getElementById('text2');
+    var text3 = document.getElementById('text3');
+    EventUtil.addHander(text1,'keyup',tabForward);
+    EventUtil.addHander(text2,'keyup',tabForward
+    EventUtil.addHander(text3,'keyup',tabForward
+    })()
+```
+
+
+4. 下拉框 select   
