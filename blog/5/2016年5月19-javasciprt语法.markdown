@@ -437,3 +437,104 @@ var person2 = new Person('xiaoming',20,'it');
   'name' in person1 //true  虽然实例中没有,但是它的原型链有,所以返回true
   Object.keys(person1) //会枚举出实例中所有的属性
 ```
+
+##八、定时器和延迟执行##
+
+```
+//延迟一秒执行fn函数，只执行一次
+  let timeout = 1000;
+  var fn = function(){
+    console.log('hello');
+  }
+  var timeoutId = setTimeout(fn,timeout)
+  //清除间歇执行函数
+  clearTimeout(timeoutId);
+
+
+  //定时器，每秒执行fn函数，直到清除定时器
+  var timeout = 1000;
+  var fn = function(){
+    console.log('定时器')
+  }
+  var intervalId = setInterval(fn,timout)
+  //清除定时器
+  clearInterval(itervalId);
+```
+
+##九、BOM(浏览器相关)##
+
+1. 系统对话框
+
+```
+  alert(); //弹出框
+
+  confirm();//确认框
+  if(confirm('are you sure?')){
+    console.log('sure');
+  } else{
+    console.log('I am not sure!');
+  }
+
+  prompt();//交互框
+  var result = promot("what's up?"，'默认值');
+  if(result!=null){
+    alert(result);
+  }
+
+```
+
+2. location对象  
+
+参数
+
+```
+location.hash //#contents url的hash值
+location.host // ip
+location.hostname //域名
+location.href //http域名
+location.pathname //url的目录
+location.port //8080
+location.protocool //协议
+location.search //?q=search
+location.reload() //可能从缓存加载
+location.reload(true) //重新加载
+```
+
+3. navigator对象 检测浏览器属性    
+
+```
+navigator.appCodeName //浏览器的名字
+navigator.appName //完整的浏览器名称
+navigator.appVersion //浏览器的版本
+navigator.cookieEnabled //cookie是否启用
+navigator.javaEnabled() //java是否启用
+navigator.language //主语言 zh-CH
+navigator.languages //支持的语言
+navigator.onLine //浏览器是否连接到了internet
+navigator.platofrm //浏览器的平台 "Win32"
+navigator.plugins //返回浏览器安装的插件的数组
+function hasPlugin(name){
+  name  = name.toLowerCase();
+  for(var i = 0 ; i<navigator.plugins.length;i++){
+    // >-1表示找到了
+    var isTrue = navigator.plugins[i].name.toLowerCase().indexOf(name)>-1;
+    if(isTrue){
+      return true;
+    }
+  }
+  return false ;
+}
+```
+
+4. history对象   
+
+```
+  history.go(-1);//后退一页
+  history.back();
+
+  history.go(1);//前进一页
+  history.forward();
+
+  history.go('xiaomo.info')//跳转到最近访问过的该页面
+  history.length==0 //表示这是用户打开浏览器的第一个页面
+```
