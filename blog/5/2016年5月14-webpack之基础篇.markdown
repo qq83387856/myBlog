@@ -1,8 +1,8 @@
 <!--
 author: 小莫
 date: 2016-05-14
-title: wepback使用之基础篇
-tags: webback
+title: webpack使用之基础篇
+tags: webpack
 category: 自动化构建工具
 status: publish
 summary: 说到自动化构建，你想到了什么？基于AMD的requirejs？还是基于commoJS的browserify？
