@@ -823,5 +823,5 @@ var CookieUtil = {
 Window.localStorage.setItem(key,value);//存储数据
 Window.localStorage.getItem(key);//读取数据
 Window.localStorage.removeItem(key);//删除数据项
-Window.localStorage.clear();//删除所有数据 
+Window.localStorage.clear();//删除所有数据
 ```
