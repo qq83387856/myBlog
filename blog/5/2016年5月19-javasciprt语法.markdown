@@ -667,3 +667,100 @@ function hasPlugin(name){
 
 
 4. 下拉框 select   
+
+```
+  add(newOption,relOption) 插入一个option
+  //最佳做法(在列表最后插入一个option)
+  var newOption = new Option("text","value");
+  selectBox.add(newOption,undefined);
+
+  multiple 是否允许多选
+  options 控件中所有options的HTMLCollection
+  remove(index) 移除指定位置的选项
+  //移除指定的选项(这里移除的是第一项)
+  var index = 0
+  selectBox.remove(selectBox.options[index])
+  selectedIndex 基于0的选中项的索引,没有选中项-1
+  size 选择框中可见的行数
+  text 选中项的文本内容
+  value 选项的值
+  //移动一个选项到特定位置(将第2个选项移动到最后一个选项)
+  var optionToMove = selectBox.options[1];
+  selectBox.insertBefore(optionToMove,selectBox.options[optionToMove.index-1])
+  /添加一个选项(把当前列表中的第一个选项添加到当前列表的最后)
+  selectBox.appendChind(selectBox.options[0]);
+```
+
+5. 表单序列化    
+
+原则：   
+对表单字段的名字和值进行url编码,使用&分割    
+不发送禁用的表单字段    
+只发送勾选的单选按钮和复选框   
+不发送type为reset和button的按钮   
+多选框中的每选中的值单独一个条目    
+submit的时候,本按钮也会被提交   
+select发送的时候如果有value就发value的值 没有就发text内容  
+
+`form.serialize()`  
+
+6. 富文本编辑器  
+只要加上`contenteditable`就可以让div可以编辑   
+`<div id="richedit" contenteditable></div>`
+也可以用js控制
+
+```
+  var richedit = document.getElementById('richedit');
+  richedit.contenteditable="true";
+  // true false inherit
+  document.exexCommand(命令,false,值);
+  //document.exexCommand('bold',false,null);
+```
+
+
+## 十一、canvas ##   
+
+```
+  //定义一个canvas   
+  <canvas id="drawing" width="200" height="200">
+      您的浏览器不支持canvas
+  </canvas>
+  //获取canvas
+  document.getElementById('drawing');
+  if(drawing.getContext){
+    var context = drawing.getContext('2d');
+    context.fillReact(30,30,30,30); //画了一个正方形
+    context.fillStyle='#fff'; //填充
+    context.strokeStyle='red'; //描边
+    // todo
+  }
+```
+
+
+## 十二、html5脚本编程##
+
+```
+  //跨文档消息传送
+  EventUtil.addHander(window,"message",function(event){
+      if(event.origin="http://www.wrox.com"){//发送消息的文档所在的域
+        //接受参数
+        processMessage(event.data);
+        //可选:向窗口来源发送回执
+        event.source.postMessage("Receiived","http://xiaomo.info")
+      }
+
+
+    })
+```
+
+
+## 十三、cookie##   
+
+```
+  var CookUtil = {
+      get:function(name){
+        var cookieName
+      }
+
+  }
+```
