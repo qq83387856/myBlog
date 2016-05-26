@@ -51,9 +51,9 @@ koa2
 ##四、国际惯例-项目演示##
 
 1. 安装koa-generator  
-2. 新建项目  
+2. 新建项目   
 3. 运行项目  
+4. 演示结束   
+![koa生成器](./../img/koa-generator.gif)
 
-![koa生成器](./../images/koa-generator.gif)
-
-查看大图 [koa生成器](./../images/koa-generator.gif)
+查看大图 [koa生成器](./../img/koa-generator.gif)
