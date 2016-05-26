@@ -2,7 +2,7 @@
 author: 小莫
 date: 2016-05-24
 title: nodejs框架koa学习
-tags: node
+tags: nodejs
 category: nodejs框架koa
 status: publish
 summary: Koa 是一个类似于 Express 的Web开发框架，创始人也都是TJ。Koa 的主要特点是，使用了 ES6 的 Generator 函数，进行了架构的重新设计。Koa 的原理和内部结构很像 Express，但是语法和内部结构进行了升级。
