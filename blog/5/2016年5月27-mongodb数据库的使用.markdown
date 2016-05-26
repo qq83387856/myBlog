@@ -34,12 +34,12 @@ summary: 最近在学习node，所以听说node和mongodb更配哦。。所以�
 4. 展示数据库列表
 `show dbs`
 
-5. 插入数据(类似于mysql的表)
+5. 插入数据(类似于mysql的表)  
 `db.users.insert({'name':'xiaomo'})`  
 `db.users.insert({'name':'xiaoming','age':25})`  
 `db.users.insert({'name':'xiaoming','age':24,'sex':'女'})`
 
-6. 查询集合(前提是use了一个数据库)
+6. 查询集合(前提是use了一个数据库)  
 `show collections`
 有一个System.indexes 是索引
 
@@ -47,7 +47,7 @@ summary: 最近在学习node，所以听说node和mongodb更配哦。。所以�
 `db.users.find()`  
 
 8. 带条件查询(参数是一个对象)  
-`db.users.find({'name':'xiaomo'})`
+`db.users.find({'name':'xiaomo'})`  
 
 9. 更新数据(有三个参数,1:查询条件,2:更新的内容 3：更新的配置)  
 `db.users.update({'name':'xiaomo',{$set:{'name:'xm}})` //修改满足条件的第一条数据  
