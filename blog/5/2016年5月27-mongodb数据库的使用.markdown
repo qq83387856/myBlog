@@ -43,7 +43,7 @@ summary: 最近在学习node，所以听说node和mongodb更配哦。。所以�
 `show collections`
 有一个System.indexes 是索引
 
-7. 不带条件查询  
+7. 不带条件查询
 `db.users.find()`  
 
 8. 带条件查询(参数是一个对象)  
@@ -56,7 +56,7 @@ summary: 最近在学习node，所以听说node和mongodb更配哦。。所以�
 10. 保存数据(只有一个参数，必须要传id，后面是要修改的数据)  
 `db.users.save({'id':'objectId(574710a97a3afd63cde56a49)','age':30})`
 
-11. 删除数据(1:条件 2 是否删除所有符合条件的)
+11. 删除数据(1:条件 2 是否删除所有符合条件的)    
 `db.users.remove({'name':'xiaomoing'},true)`  
 
 12. 删除集合  
