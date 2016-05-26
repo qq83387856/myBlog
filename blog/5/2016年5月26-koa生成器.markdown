@@ -47,3 +47,13 @@ koa2
     --git           添加 .gitignore
 -f, --force         force on non-empty directory
 ```  
+
+##四、国际惯例-项目演示##
+
+1. 安装koa-generator  
+2. 新建项目  
+3. 运行项目  
+
+![koa生成器](./../images/koa-generator.gif)
+
+查看大图 [koa生成器](./../images/koa-generator.gif)
