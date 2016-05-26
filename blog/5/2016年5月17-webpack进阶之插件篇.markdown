@@ -1,0 +1,356 @@
+<!--
+author: 小莫
+date: 2016-05-17
+title: webpack进阶之插件篇
+tags: webpack
+category: webpack插件
+status: publish
+summary: 上一篇博客讲解了webpack环境的基本，这一篇讲解一些更深入的内容和开发技巧。基本环境搭建就不展开讲了
+-->
+
+## 一、插件篇##
+* autoprefixer  
+
+>官方是这样说的：`Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website`
+，也就是说它是一个自动检测兼容性给各个浏览器加个内核前缀的插件。  
+
+举个栗子：最新的弹性盒模型flux
+实际代码：
+```
+:fullscreen a {
+    display: flex
+}
+```
+
+插件自动补充后
+```
+a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+```
+
+效果显而易见，我们可以更专注于css布局和美化，而不需要花过多的精力都写相同的外码而加上不同的前缀，也减少了冗余代码。
+
+使用方法:
+
+`cnpm install --save-dev autoprefixer postcss-loader`
+
+```
+var autoprefixer = require('autoprefixer');
+module.exports={
+  //其他配置这里就不写了
+
+  module:{
+    loaders:[
+    {
+      test:/\.css$/,
+      //在原有基础上加上一个postcss的loader就可以了
+      loaders:['style-loader','css-loader','postcss-loader']
+      }
+      ]
+  },
+  postcss:[autoprefixer({browsers:['last 2 versions']})]
+
+}
+```
+
+* html-webpack-plugin
+
+`cnpm install html-webpack-plugin --save-dev`
+
+```
+  //webpack.config.js
+  var HtmlWebpackPlugin = require('html-webpack-plugin');
+  module.exports={
+    entry:'./index.js',
+    output:{
+      path:__dirname+'/dist',
+      filename:'bundle.js'
+    }
+    plugins:[
+      new HtmlWebpackPlugin()
+    ]
+  }
+```
+
+>作用:它会在dist目录下自动生成一个index.html
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Webpack App</title>
+  </head>
+  <body>
+    <script src="bundle.js"></script>
+  </body>
+</html>
+```
+
+其他配置参数:
+
+```
+{
+  entry: 'index.js',
+  output: {
+    path: 'dist',
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: 'admin.html',
+      template:'header.html',
+      inject: 'body',
+      favicon:'./images/favico.ico',
+      minify:true,
+      hash:true,
+      cache:false,
+      showErrors:false,
+      "chunks": {
+      "head": {
+        "entry": "assets/head_bundle.js",
+        "css": [ "main.css" ]
+      },
+      xhtml:false
+    })
+  ]
+}
+```
+
+```
+<!-- header.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+作用：   
+title: 设置title的名字   
+filename: 设置这个html的文件名   
+template:要使用的模块的路径  
+inject: 把模板注入到哪个标签后 'body',   
+favicon: 给html添加一个favicon  './images/favico.ico',   
+minify:是否压缩  true false   
+hash:是否hash化 true false ,     
+cache:是否缓存,   
+showErrors:是否显示错误,  
+chunks:目前没太明白  
+xhtml:是否自动毕业标签 默认false  
+
+* extract-text-webpack-plugin  
+>官网是这么解释的`Extract text from bundle into a file.`,把额外的数据加到编译好的文件中
+
+```
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+module.exports = {
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+                template: './src/public/index.html',
+                inject: 'body'
+            }),
+        new ExtractTextPlugin("[name].[hash].css")
+    ]
+}
+```
+
+说明：将css放到index.html的body上面
+
+* copy-webpack-plugin   
+>官方这样解释 `Copy files and directories in webpack`,在webpack中拷贝文件和文件夹
+
+```
+cnpm install --save-dev copy-webpack-plugin
+
+new CopyWebpackPlugin([{
+    from: __dirname + '/src/public'
+}]),
+```
+
+>作用：把public 里面的内容全部拷贝到编译目录
+
+| 参数        | 作用           | 其他说明  |
+| :-----------: |:--------:  | :---:|
+| from      | 定义要拷贝的源目录 | from: __dirname + '/src/public' |
+| to      | 定义要烤盘膛的目标目录      |   from: __dirname + '/dist' |
+| toType | `file` 或者 `dir`     |    可选，默认是文件 |
+| force |强制覆盖先前的插件      |    可选 默认false |
+| context | 不知道作用      | 可选 默认 base context 可用  specific context |
+| flatten | 只拷贝文件不管文件夹      |    默认是false |
+| ignore | 忽略拷贝指定的文件  |    可以用模糊匹配 |
+
+
+* webpack.ProvidePlugin [webpack内置插件 ]    
+
+```
+new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery",
+    "window.jQuery": "jquery"
+}))
+new webpack.NoErrorsPlugin(),
+new webpack.optimize.DedupePlugin(),
+new webpack.optimize.UglifyJsPlugin(),
+new webpack.optimize.CommonsChunkPlugin('common.js')
+```
+
+作用: 和上面5个一一对应  
+1. 把一些需要的东西绑定到window上，暴露出来 成为全局变量
+2. 不显示错误插件
+3. 具体不是太清楚，先记录着
+4. 丑化js 混淆代码而用
+5. 提取公共代码的插件
+
+## 二、一个完整的栗子##
+```
+'use strict';
+
+// Modules
+var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
+/**
+ * Env
+ * Get npm lifecycle event to identify the environment
+ */
+var ENV = process.env.npm_lifecycle_event;
+var isTest = ENV === 'test' || ENV === 'test-watch';
+var isProd = ENV === 'build';
+
+module.exports = function makeWebpackConfig() {
+    var config = {};
+
+    config.entry = isTest ? {} : {
+        app: './src/app/app.js'
+    };
+
+    config.output = isTest ? {} : {
+        // Absolute output directory
+        path: __dirname + '/dist',
+
+        publicPath: isProd ? '/' : 'http://localhost:8080/',
+
+        filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+
+        chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
+    };
+
+    if (isTest) {
+        config.devtool = 'inline-source-map';
+    } else if (isProd) {
+        config.devtool = 'source-map';
+    } else {
+        config.devtool = 'eval-source-map';
+    }
+
+    config.module = {
+        preLoaders: [],
+        loaders: [{
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: /node_modules/
+        }, {
+            test: /\.css/,
+            loader: isTest ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+        }, {
+            test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+            loader: 'file'
+        }, {
+            test: /\.json$/,
+            loader: 'json'
+        }, {
+            test: /\.scss/,
+            loader: 'style!css!sass'
+        }, {
+            test: /\.html$/,
+            loader: 'raw'
+        }]
+    };
+    if (isTest) {
+        config.module.preLoaders.push({
+            test: /\.js$/,
+            exclude: [
+                /node_modules/,
+                /\.spec\.js$/
+            ],
+            loader: 'isparta-instrumenter'
+        })
+    }
+
+    config.postcss = [
+        autoprefixer({
+            browsers: ['last 2 version']
+        })
+    ];
+
+    config.plugins = [];
+    if (!isTest) {
+        config.plugins.push(
+            new HtmlWebpackPlugin({
+                template: './src/public/index.html',
+                inject: 'body'
+            }),
+
+            new ExtractTextPlugin('[name].[hash].css', {disable: !isProd})
+        )
+    }
+
+    if (isProd) {
+        config.plugins.push(
+            new webpack.NoErrorsPlugin(),
+
+            new webpack.optimize.DedupePlugin(),
+
+            new webpack.optimize.UglifyJsPlugin(),
+
+            new CopyWebpackPlugin([{
+                from: __dirname + '/src/public'
+            }]),
+            new webpack.ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery",
+                "window.jQuery": "jquery"
+            }))
+    }
+
+    config.devServer = {
+        contentBase: './src/public',
+        stats: 'minimal'
+    };
+
+    return config;
+}();
+
+```
+
+## 三、调试技巧##
+
+```
+if (isTest) {
+    config.devtool = 'inline-source-map';
+} else if (isProd) {
+    config.devtool = 'source-map';
+} else {
+    config.devtool = 'eval-source-map';
+}
+```
+
+>作用: 使用source-map可以在debug的时候看到源代码，方便 查错

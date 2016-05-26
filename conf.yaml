@@ -23,7 +23,7 @@ author:
     avatar: http://static.xiaomo.info/images/avatar.png
 blog:
     recentSize: 5
-    pageSize: 6
+    pageSize: 999
     pageBarSize: 5
     allBlogsForPage: false
 text:
