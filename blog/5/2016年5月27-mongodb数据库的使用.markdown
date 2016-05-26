@@ -65,15 +65,140 @@ summary: 最近在学习node，所以听说node和mongodb更配哦。。所以�
 ##三、使用mongoose操作数据库##  
 
 1. 模块的介绍  
+连接mongdodb的驱动
 
 2. 配置和链接  
+`cnpm install --save mongoose`  
+
+```
+  var mongoose = require('mongoose');
+  //var uri = 'mongodb://username:password@hostname:port/databasename';
+  var uri = 'mongodb://xiaomo:xiaomo@115.29.137.34:27017/admin';
+  mongoose.connect(uri);
+```
 
 3. Model 和Shema
 
+```
+ // model.js
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+
+var BlogPost = new Schema({
+    author    : ObjectId,
+    title     : String,
+    body      : String,
+    date      : Date
+});
+
+//Model
+mongoose.model('blog',Schema);
+
+var Comment = new Schema({
+  name: { type: String, default: 'hahaha' },
+  age: { type: Number, min: 18, index: true },
+  bio: { type: String, match: /[a-z]/ },
+  date: { type: Date, default: Date.now }
+});
+
+// a setter
+Comment.path('name').set(function (v) {
+  return capitalize(v);
+});
+
+// middleware
+Comment.pre('save', function (next) {
+  notify(this.get('email'));
+  next();
+});
+
+```
+
 4. 创建文档  
+
+```
+  //insert.js
+  var mongoose ＝ require('mongoose');
+  require('./model.js'); //执行
+  var Blog = mongoose.model('blog');
+  var blog = new Blog({
+      name:'xiaomo',
+      age:25,
+      bio:'don't know',
+      date:new Date
+    });
+
+  book.save(function(err){
+      console.log('save status:'+err);
+    });
+```
 
 5. 删除文档  
 
+```
+  var mongoose = require('mongoose');
+  require('./model.js');
+  var Blog = mongoose.model('blog');
+  Blog.findOne({'name':'xiaomo'},function(err,doc){
+    if(err){
+    console.log(err)
+    return;
+    }
+    if(doc){
+    doc.reomove();
+  }
+    })
+```
+
 6. 简单查询
 
+```
+  var mongoose = require('mongoose');
+  require('./model.js');
+  var Blog = mongoose.model('blog');
+  Blog.find({},function(err,doc){
+    if(err){
+    console.log(err)
+    return;
+    }
+    console.log('result',doc)
+    })
+```
+
+第一个满足条件的结果
+
+```
+  var mongoose = require('mongoose');
+  require('./model.js');
+  var Blog = mongoose.model('blog');
+  Blog.findOne({'name':'xiaomo'},function(err,doc){
+    if(err){
+    console.log(err)
+    return;
+    }
+    console.log('result',doc)
+    })
+```
+
 7. 条件语句  
+
+```
+ //condation.js
+  var mongoose = require('mongoose');
+  require('./model.js');
+  var Blog = mongoose.model('blog');
+  //名字是xiaomo或者xiaoming 可以用$or和$and 
+  var condation = {
+    $or  $and:[
+    {'name':'xiaomo'},
+    {'name':'xiaoming'}
+    ]
+  }
+  Blog.find(condation,function(err,doc){
+    if(err){
+    console.log(err)
+    return;
+    }
+    console.log('result',doc)
+    })
+```
