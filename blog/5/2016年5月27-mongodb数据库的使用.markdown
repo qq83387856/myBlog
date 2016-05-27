@@ -11,7 +11,7 @@ summary: 最近在学习node，所以听说node和mongodb更配哦。。所以�
 ##一、mongodb的开启和关闭##
 
 1. 查找mongod是否可用  
-`whic mongod`
+`which mongod`
 
 2. 启动mongodb 指定path 和log日志
 `mongod --dbpath /data2/db --port=27017 --fork /data2/db/log/mongod.log`
@@ -187,7 +187,7 @@ Comment.pre('save', function (next) {
   var mongoose = require('mongoose');
   require('./model.js');
   var Blog = mongoose.model('blog');
-  //名字是xiaomo或者xiaoming 可以用$or和$and 
+  //名字是xiaomo或者xiaoming 可以用$or和$and
   var condation = {
     $or  $and:[
     {'name':'xiaomo'},
