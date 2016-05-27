@@ -202,3 +202,66 @@ Comment.pre('save', function (next) {
     console.log('result',doc)
     })
 ```
+
+
+##三、在项目中使用mongoose##  
+
+1. 生成项目
+`koa koatest -e koatest`  
+
+2. 安装依赖  
+`cd koatest && cnpm install`
+
+3. 安装mongoose  
+`cnpm install --save mongoose`  
+
+4. 创建模型  
+
+```
+  //models/users.server.model.js
+  var mongoose = require('mongoose');
+  var UserSchema = new mongoose.Schema({
+      uid:Number,
+      username:String,
+      createTime:Date,
+      lastLogin:Date
+    })
+  module.exports = mongoose.model('User',UserSchema);
+```
+
+5. 创建配置文件  
+
+```
+  //config/config.js
+  module.exports={
+    mongodb:'mongodb://xiaomo:xiaomo@115.29.137.34:27017/admin'
+  }
+  //config/mongoose.js
+  var mongoose = require('mongoose');
+  var config = require('./config.js');
+
+  module.exports=function(){
+    var db = mongoose.connect(config.mongodb);
+    require('./../models/users.server.model.js');
+    return db;
+  }
+```
+
+6. 操作mongdodb  
+
+```
+  //routers/users.js
+  var router = require('koa-router')();
+  var mongoose = require('mongoose');
+  var User = require('./../models/users.server.model.js')
+  router.get('/', function *(next) {
+      //add
+      var user = new User({
+        uid:
+        })
+      this.body = yield User.find({});
+  });
+  module.exports = router;
+
+
+```
