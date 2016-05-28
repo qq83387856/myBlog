@@ -3,7 +3,7 @@ author: 小莫
 date: 2016-05-11
 title: angularjs键盘事件
 tags: angularjs
-category: angulrjs键盘事件
+category: angularjs键盘事件
 status: publish
 summary: 使用angularjs的键盘事件来增强用户体验。
 -->

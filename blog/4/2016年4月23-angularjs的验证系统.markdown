@@ -3,7 +3,7 @@ author: 小莫
 date: 2016-05-10
 title: angularjs的验证系统,
 tags: angularjs
-category: anguarjs表单验证
+category: angularjs表单验证
 status: publish
 summary: 使用angularjs的验证系统来做前端验证需要注意的一些地方
 -->
