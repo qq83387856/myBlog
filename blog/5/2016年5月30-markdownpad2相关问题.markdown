@@ -31,7 +31,7 @@ GBPduHjWfJU1mZqcPM3BikjYKF6xKhlKIys3i1MU2eJHqWGImDHzWdD6xhMNLGVpbP2M5SN6bnxn2kSE
 3. 出现的问题
 MarkdownPad 2 在win10下html渲染错误This view has crashed，windows 10系统 需要下载 一个`awesomium_v1.6.6_sdk_win`这是一个`HTML UI ENGINE`
 
-下载地址[http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe]( http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe)
+下载地址[http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe](http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe "http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe")
 
 亲测下载安装后渲染正常;
 
