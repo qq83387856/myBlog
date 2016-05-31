@@ -106,3 +106,10 @@ inc 函数被迭代了 3 次，第一次的时候，number 变量在函数中被
 
   app.listen(8080)
 ```
+
+
+## 我的github地址
+[https://github.com/qq83387856](https://github.com/qq83387856)
+
+## 原文地址
+[在koa中使用mongoose操作mongodb数据库](http://blog.xiaomo.info/blog/5/2016%25E5%25B9%25B45%25E6%259C%258824-nodejs%25E6%25A1%2586%25E6%259E%25B6koa%25E5%25AD%25A6%25E4%25B9%25A0.html)
