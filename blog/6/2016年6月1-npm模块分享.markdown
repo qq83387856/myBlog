@@ -147,7 +147,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 
 	});
 ```
-
+## 1、
 *  [debug](https://npm.taobao.org/package/debug)  
 
 ` cnpm install debug`  
@@ -199,7 +199,7 @@ windows 下启动方式
 将debug日志转存到文件中  
 `DEBUG_FD=3 node your-app.js 3> whatever.log`   
 
-
+## 2、
 * [koa-bodyparser](https://npm.taobao.org/package/koa-bodyparser)   
 
 使用方法  
