@@ -10,43 +10,45 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 
 ## 一、 有用的模块
 
-1. [thunder-vip](https://github.com/nswbmw/thunder-vip)  
+*  
+ [thunder-vip](https://github.com/nswbmw/thunder-vip)  
 
-获取最新可用的迅雷 vip 账号。
+  获取最新可用的迅雷 vip 账号。
 
-解决什么：  
-不用每次打开网站去找号。。
+  解决什么：  
+  不用每次打开网站去找号。。
 
-##### 用法：
+  ##### 用法：
 
-`$ thunder`  
-or
+  `$ thunder`  
+  or
 
-```
-var thunderVip = require('thunder-vip');
+  ```
+    var thunderVip = require('thunder-vip');
 
-thunderVip(function (err, accounts) {
-console.log(accounts);
-});
-```
+    thunderVip(function (err, accounts) {
+    console.log(accounts);
+    });
+  ```
 
-截图  
+  截图  
 
-![1](https://dn-cnode.qbox.me/FskKgd_Epv4IYYh0waATFFHoD7g9)
+  ![1](https://dn-cnode.qbox.me/FskKgd_Epv4IYYh0waATFFHoD7g9)
 
 
-2. [npm-user-downloads](https://github.com/nswbmw/npm-user-downloads)  
+*  
+[npm-user-downloads](https://github.com/nswbmw/npm-user-downloads)  
 
-查看 npm 用户某个时间段内所有模块的下载量，按从高到低排名。
+  查看 npm 用户某个时间段内所有模块的下载量，按从高到低排名。
 
-解决什么：
+  解决什么：
 
-起初是想看自己的那些模块下载量多，好重点维护。。
+  起初是想看自己的那些模块下载量多，好重点维护。。
 
-用法：
+  用法：
 
-`$ nud hupengbest last-month --limit=20`
+  `$ nud hupengbest last-month --limit=20`
 
-截图：
+  截图：
 
-![1](https://dn-cnode.qbox.me/FhJDMWtAwWxgkXsEMWsfIz4XZ3Jl)
+  ![1](https://dn-cnode.qbox.me/FhJDMWtAwWxgkXsEMWsfIz4XZ3Jl)
