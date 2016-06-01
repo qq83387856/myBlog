@@ -220,3 +220,22 @@ windows 下启动方式
 在koa2中使用   
 
 `npm install koa-bodyparser@next --save`
+
+## 4. koa-json
+* [koa-json](https://npm.taobao.org/package/koa-json)  
+
+`cnpm install koa-json --save`  
+
+使用方法   
+
+```
+var json = require('koa-json');
+var Koa = require('koa');
+var app = new Koa();
+
+app.use(json());
+
+app.use((ctx) => {
+  ctx.body = { foo: 'bar' };
+});
+```
