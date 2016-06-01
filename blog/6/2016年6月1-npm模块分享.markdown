@@ -199,7 +199,7 @@ windows 下启动方式
 将debug日志转存到文件中  
 `DEBUG_FD=3 node your-app.js 3> whatever.log`   
 
-## 2、
+## 二、
 * [koa-bodyparser](https://npm.taobao.org/package/koa-bodyparser)   
 
 使用方法  
