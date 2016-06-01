@@ -11,9 +11,24 @@ summary: 好的script能够大大减少我们对命令行的操作，直接使�
 ## 一、git相关
 
 ```
-"createtag": "git tag -a 0.1.1 -m Release^-^",
-"pushtag": "git push origin --tags",
-"tag": "npm run createtag && npm run pushtag",
+"查看":"-------------------------",
+"branch": "git branch -a",
+"tag": "git tag",
+"标签":"-------------------------",
+"createtag": "git tag -a 0.1.2 -m Release^-^",
+"pushtag": "npm run createtag && git push origin --tags",
+"delbranch": "git push origin --delete",
+"推送":"-------------------------",
+"fetch":"git fetch -p",
+"push":"git push origin master",
+"commit":"git commit -a ",
+"checkout":"git checkout",
+"删除":"-------------------------",
+"deltag": "git push origin --delete tag",
+"delbranck": "git branch -d",
+"delbranchall": "git branch -D",
+"重命名":" param1 原 param2 新----",
+"renamebranch": "git branch -m",
 ```
 
 ## 二、webpack相关
