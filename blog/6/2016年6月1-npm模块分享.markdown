@@ -58,7 +58,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 *  [co](https://npm.taobao.org/package/co)  
 作用：异步控制  
 
-栗子
+1 栗子
 
 ```
 	co(function* () {
@@ -71,7 +71,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 	});
 ```
 
-如果你想把一个 co-generator-function 转成真实的functionu并返回一个promise 可以使用`co.wrap(fn*)`
+2 如果你想把一个 co-generator-function 转成真实的functionu并返回一个promise 可以使用`co.wrap(fn*)`
 
 ```
 	var fn = co.wrap(function* (val) {
@@ -83,7 +83,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 	});
 ```
 
-完整的example  
+3 完整的example  
 
 ```
 	var co = require('co');
@@ -118,6 +118,34 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 	  // HANDLE ALL YOUR ERRORS!!!
 	  console.error(err.stack);
 	}
+```
+
+4 api  
+
+##### co(fn*).then( val => ) 
+解决一个generator然后返回一个promise
+
+```
+	co(function* () {
+	  return yield Promise.resolve(true);
+	}).then(function (val) {
+	  console.log(val);
+	}, function (err) {
+	  console.error(err.stack);
+	});
+```
+
+##### var fn = co.wrap(fn*)  
+将一个generator转成普通的function并返回一个promise  
+
+```
+	var fn = co.wrap(function* (val) {
+	  return yield Promise.resolve(val);
+	});
+	
+	fn(true).then(function (val) {
+	
+	});
 ```
 
 *  
