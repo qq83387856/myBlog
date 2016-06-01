@@ -9,7 +9,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 -->
 
 ## 一、 实用的模块
-
+## 1.thunder-vip  
 *  
  [thunder-vip](https://github.com/nswbmw/thunder-vip)  
 
@@ -35,7 +35,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 
   ![1](https://dn-cnode.qbox.me/FskKgd_Epv4IYYh0waATFFHoD7g9)
 
-
+## 2. npm-user-downloads
 *  
 [npm-user-downloads](https://github.com/nswbmw/npm-user-downloads)  
 
@@ -54,7 +54,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
   ![1](https://dn-cnode.qbox.me/FhJDMWtAwWxgkXsEMWsfIz4XZ3Jl)
 
 ## 二、koa开发模块
-
+## 1. co
 *  [co](https://npm.taobao.org/package/co)  
 作用：异步控制  
 
@@ -147,7 +147,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 
 	});
 ```
-## 1、
+## 2、debug
 *  [debug](https://npm.taobao.org/package/debug)  
 
 ` cnpm install debug`  
@@ -199,7 +199,7 @@ windows 下启动方式
 将debug日志转存到文件中  
 `DEBUG_FD=3 node your-app.js 3> whatever.log`   
 
-## 二、
+## 3、koa-bodyparser
 * [koa-bodyparser](https://npm.taobao.org/package/koa-bodyparser)   
 
 使用方法  
