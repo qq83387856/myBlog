@@ -198,3 +198,25 @@ windows 下启动方式
 
 将debug日志转存到文件中  
 `DEBUG_FD=3 node your-app.js 3> whatever.log`   
+
+
+* [koa-bodyparser](https://npm.taobao.org/package/koa-bodyparser)   
+
+使用方法  
+
+```
+  var koa = require('koa');
+  var bodyParser = require('koa-bodyparser');
+
+  var app = koa();
+  app.use(bodyParser());
+
+  app.use(function *() {
+    this.body = this.request.body;
+  });
+```
+
+
+在koa2中使用   
+
+`npm install koa-bodyparser@next --save`
