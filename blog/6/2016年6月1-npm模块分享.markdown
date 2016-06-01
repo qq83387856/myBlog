@@ -77,9 +77,9 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 	var fn = co.wrap(function* (val) {
 	  return yield Promise.resolve(val);
 	});
-	
+
 	fn(true).then(function (val) {
-	
+
 	});
 ```
 
@@ -87,12 +87,12 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 
 ```
 	var co = require('co');
-	
+
 	co(function *(){
 	  // yield any promise
 	  var result = yield Promise.resolve(true);
 	}).catch(onerror);
-	
+
 	co(function *(){
 	  // resolve multiple promises in parallel
 	  var a = Promise.resolve(1);
@@ -102,7 +102,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 	  console.log(res);
 	  // => [1, 2, 3]
 	}).catch(onerror);
-	
+
 	// errors can be try/catched
 	co(function *(){
 	  try {
@@ -111,7 +111,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 	    console.error(err.message); // "boom"
 	 }
 	}).catch(onerror);
-	
+
 	function onerror(err) {
 	  // log any uncaught errors
 	  // co will not throw any errors you do not handle!!!
@@ -142,9 +142,9 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 	var fn = co.wrap(function* (val) {
 	  return yield Promise.resolve(val);
 	});
-	
+
 	fn(true).then(function (val) {
-	
+
 	});
 ```
 
@@ -153,27 +153,27 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 ` cnpm install debug`  
 
 1. 使用方法  
- 
+
 `Example app.js`
 
 ```
 	var debug = require('debug')('http')
 	  , http = require('http')
 	  , name = 'My App';
-	
+
 	// fake app
-	
+
 	debug('booting %s', name);
-	
+
 	http.createServer(function(req, res){
 	  debug(req.method + ' ' + req.url);
 	  res.end('hello\n');
 	}).listen(3000, function(){
 	  debug('listening');
 	});
-	
+
 	// fake worker of some kind
-	
+
 	require('./worker');
 ```
 
@@ -181,7 +181,7 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 
 ```
 	var debug = require('debug')('worker');
-	
+
 	setInterval(function(){
 	  debug('doing some work');
 	}, 1000);
@@ -191,11 +191,10 @@ summary: 平时自己用的npm模块也不算少了，其实网上有很多牛�
 ![1](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png)
 
 在windows环境下需要设置环境变量`set DEBUG=*,-not_this` 我这里使用的是idea的debug调试  
-![1](http://static.xiaomo.info/images/debug.jpg)
+![1](http://static.xiaomo.info/images/debug.png)
 
 windows 下启动方式  
 ![1](http://f.cl.ly/items/2i3h1d3t121M2Z1A3Q0N/Screenshot.png)
 
 将debug日志转存到文件中  
 `DEBUG_FD=3 node your-app.js 3> whatever.log`   
-
