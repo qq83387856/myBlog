@@ -1,0 +1,52 @@
+<!--
+author: 小莫
+date: 2016-06-01
+title: npm模块分享
+tags: npm
+category: npm
+status: publish
+summary: 平时自己用的npm模块也不算少了，其实网上有很多牛人开发的npm模块都很好，希望不要被埋没了。
+-->
+
+## 一、 有用的模块
+
+1. [thunder-vip](https://github.com/nswbmw/thunder-vip)  
+
+获取最新可用的迅雷 vip 账号。
+
+解决什么：  
+不用每次打开网站去找号。。
+
+##### 用法：
+
+`$ thunder`  
+or
+
+```
+var thunderVip = require('thunder-vip');
+
+thunderVip(function (err, accounts) {
+console.log(accounts);
+});
+```
+
+截图  
+
+![1](https://dn-cnode.qbox.me/FskKgd_Epv4IYYh0waATFFHoD7g9)
+
+
+2. [npm-user-downloads](https://github.com/nswbmw/npm-user-downloads)  
+
+查看 npm 用户某个时间段内所有模块的下载量，按从高到低排名。
+
+解决什么：
+
+起初是想看自己的那些模块下载量多，好重点维护。。
+
+用法：
+
+`$ nud hupengbest last-month --limit=20`
+
+截图：
+
+![1](https://dn-cnode.qbox.me/FhJDMWtAwWxgkXsEMWsfIz4XZ3Jl)
