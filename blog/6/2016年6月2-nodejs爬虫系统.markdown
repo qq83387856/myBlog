@@ -12,9 +12,10 @@ summary: 这篇文章主要介绍了NodeJS制作爬虫的全过程，包括项�
 
 1. cheerio  
 2. requst
-3.
+3. superagent
+4. eventproxy
 
-## 二、建立项目craelr-demo
+## 二、建立项目node-spider
 
 我们首先建立一个Express项目，然后将app.js的文件内容全部删除，因为我们暂时不需要在Web端展示内容。当然我们也可以在空文件夹下直接 npm install express来使用我们需要的Express功能。
 
@@ -28,7 +29,8 @@ summary: 这篇文章主要介绍了NodeJS制作爬虫的全过程，包括项�
 superagent就是ajax API来使用的Http库，它的使用方法与jQuery差不多，我们通过它发起get请求，在回调函数中输出结果。
 
 ```
-  var express = require('express');
+  var koa = require('koa');
+  var router = require('koa-router')
   var url = require('url'); //解析操作url
   var superagent = require('superagent'); //这三个外部依赖不要忘记npm install
   var cheerio = require('cheerio');
