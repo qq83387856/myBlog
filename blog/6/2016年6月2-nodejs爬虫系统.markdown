@@ -1,0 +1,15 @@
+<!--
+author: 小莫
+date: 2016-06-03
+title: nodejs爬虫
+tags: nodejs
+category: nodejs
+status: publish
+summary: nodejs爬虫
+-->
+
+## 一、 依赖
+
+1. cheerio  
+2. requst
+3. 
