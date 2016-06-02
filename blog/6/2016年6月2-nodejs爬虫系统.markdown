@@ -11,7 +11,7 @@ summary: 这篇文章主要介绍了NodeJS制作爬虫的全过程，包括项�
 ## 一、 依赖
 
 1. cheerio  
-2. requst
+2. request
 3. superagent
 4. eventproxy
 
