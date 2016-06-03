@@ -17,7 +17,7 @@ summary: 这篇文章主要介绍了NodeJS制作爬虫的全过程，包括项�
 
 ## 二、建立项目node-spider
 
-我们首先建立一个Express项目，然后将app.js的文件内容全部删除，因为我们暂时不需要在Web端展示内容。当然我们也可以在空文件夹下直接 npm install express来使用我们需要的Express功能。
+我们首先建立一个Koa2项目 `cnpm install -g koa-generator` 然后生成一个koa2的项目。 `koa2 -e node-spider`
 
 ## 三、目标网站分析
 
