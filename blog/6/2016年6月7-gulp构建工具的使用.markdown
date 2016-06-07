@@ -90,7 +90,14 @@ gulp.task(test, function () {
 gulp.task("default", [transformJs, transformSass, transformLess, test]);
 ```
 
-## 三、执行
+# 三、配置文件解读
+
+1. 第一部分的一堆`reqire`,是引用gulp相应的插件。在引用之前要确保己经安装
+2. 第二部分的几个`const`,是定义任务名常量，有多几任务就定义多少常量
+3. 第三部分的几个`task`,每个task对应一个任务，具有不同的功能。可以使用 `gulp xxx`来启动这个任务
+4. 第四部分的`default`,是执行`gulp`之后就会开始的任务 常用参数('default',[task1,task2,...],callback[可选]);
+
+## 四、执行
 1. 如果要执行`default`任务，直接gulp
 
 ```
@@ -107,7 +114,6 @@ gulp.task("default", [transformJs, transformSass, transformLess, test]);
   [09:56:06] Finished 'transformLess' after 2.66 s
   [09:56:06] Finished 'transformSass' after 2.68 s
   [09:56:06] Finished 'transformJs' after 2.7 s
-  [09:56:06] Starting 'default'...
   [09:56:06] Finished 'default' after 32 μs
 
   Process finished with exit code 0
@@ -128,5 +134,5 @@ gulp.task("default", [transformJs, transformSass, transformLess, test]);
 ```
 
 
-## 四、网上配置文件参考
+## 五、网上配置文件参考
 [gulp-webpack-demo](https://github.com/fwon/gulp-webpack-demo/blob/master/gulpfile.js)
