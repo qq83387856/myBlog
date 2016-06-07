@@ -1,0 +1,95 @@
+<!--
+author: 小莫
+date: 2016-06-07
+title: gulp构建工具的使用
+tags: gulp
+category: gulp
+status: publish
+summary: 先前学习了webpack,但是总是感觉webpack略显复杂，并且现在很多公司gulp工作流用的比较多，因此就入gulp的坑来踩一踩，技多不压身，霍霍霍...。
+-->
+
+## 一、gulp简介(增强和使你的工作程自动化)
+1. 使用简单  
+没有繁琐的配置，一个任务一个task。  
+2. 高效  
+利用node强大的工作流，快速的构建项目。  
+3. 高质量  
+gulp生态圈有相当多优秀的插件以供我们使用，合理的使用插件能让我们的工作变的简单。
+4. 易学  
+只要你对node有一定的了解，简单的看一下gulp的api你就能如你想像般的构建项目。
+
+## 二、使用  
+1. 全局安装gulp   
+`npm install -g gulp`  
+2. 建立项目  
+`mkdir gulp-test && cd gulp-test`
+3. 初始化项目(会生成package.json)
+`npm init -y`
+4. 安装项目依赖
+`npm install --save-dev gulp`
+5. 创建配置文件
+`touch gulpfile.js`
+6. gulp常用的功能：转码（gulp-babel babel-preset-es2015 gulp-sass gulp-less gulp-react）、合并（gulp-concat）、压缩（gulp-uglify）、模块化（gulp-browserify）、测试（gulp-jasmine），请依次安装这些依赖。
+7. 小常识，因为国外的网站比较慢 npm经常会卡住。我们可以设置镜像源或使用`cnpm`  
+`npm config set registry https://registry.npm.taobao.org `
+8. 写配置（gulpfile一定有一个default的任务，你可以把每个任务分文件书写然后再require进来，这种方式适合多人同时书写任务时，可以防止多人修改同一文件导致的冲突）
+
+``
+var gulp = require("gulp");
+var babel = require("gulp-babel");
+var react = require("gulp-react");
+var sass = require("gulp-sass");
+var less = require("gulp-less");
+var uglify = require("gulp-uglify");
+var jasmine = require("gulp-jasmine");
+var concat = require("gulp-concat");
+
+//定义常量
+const transformJs = "transformJs";
+const transformSass = "transformSass";
+const transformLess = "transformLess";
+const test = 'test';
+
+
+//js
+gulp.task(transformJs, function () {
+    return gulp.src("src/*.js")
+        .pipe(react())
+        .pipe(babel(
+            {
+                presets: ["babel-preset-es2015"]
+            }
+        ))
+        .pipe(concat('bundle.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest("./dist"))
+});
+
+// scss
+gulp.task(transformSass, function () {
+    return gulp.src("src/css/*.scss")
+        .pipe(sass())
+        .pipe(gulp.dest("./dist"))
+});
+
+
+// less
+gulp.task(transformLess, function () {
+    return gulp.src("src/css/*.less")
+        .pipe(less())
+        .pipe(gulp.dest("./dist"))
+});
+
+
+// jasmine
+gulp.task(test, function () {
+    return gulp.src("./test/*.js")
+        .pipe(jasmine())
+});
+
+gulp.task("default", [transformJs, transformSass, transformLess, test], function () {
+    console.log("task starting...");
+});
+```
+
+https://github.com/fwon/gulp-webpack-demo/blob/master/gulpfile.js
