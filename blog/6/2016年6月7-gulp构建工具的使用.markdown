@@ -27,16 +27,8 @@ gulp生态圈有相当多优秀的插件以供我们使用，Gulp 严格的插�
 2. gulp.dest: 目标
 3. gulp.pipe: 管道
 4. gulp.watch: 监视文件系统，文件改动时自动处理
-
-```
-  var watcher = gulp.watch('js/**/*.js', ['uglify','reload']);
-  watcher.on('change', function(event) {
-    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-  });
-```
-
 5. gulp.task: 任务
-5. gulp.task('default'): 默认任务,必须存在
+6. gulp.task('default'): 默认任务,必须存在
 
 ## 三、使用(工作流程)  
 1. 全局安装gulp   
