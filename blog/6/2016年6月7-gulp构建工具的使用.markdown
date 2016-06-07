@@ -92,5 +92,9 @@ gulp.task("default", [transformJs, transformSass, transformLess, test], function
 });
 ```
 
-## 三、网上配置文件参考
+## 三、执行
+1. 如果要执行`default`任务，直接gulp
+2. 如果想要执行单个任务，请输入 `gulp taskName`,例如`gulp test`
+
+## 四、网上配置文件参考
 [gulp-webpack-demo](https://github.com/fwon/gulp-webpack-demo/blob/master/gulpfile.js)
