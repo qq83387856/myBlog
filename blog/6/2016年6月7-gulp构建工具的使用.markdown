@@ -151,7 +151,7 @@ gulp.task("default", [transformJs, transformSass, transformLess, test]);
 ```
 
 ## 六、gulp常见任务
-1. 处理js（包括转码、合并、压缩）([gulp-babel](https://npm.taobao.org/package/gulp-babel) babel-preset-es2015 [gulp-concat](https://npm.taobao.org/package/gulp-concat) [gulp-uglify](https://npm.taobao.org/package/gulp-uglify))
+### 1. 处理js（包括转码、合并、压缩）([gulp-babel](https://npm.taobao.org/package/gulp-babel) babel-preset-es2015 [gulp-concat](https://npm.taobao.org/package/gulp-concat) [gulp-uglify](https://npm.taobao.org/package/gulp-uglify))
 
 ```
 gulp.task(transformJs, function () {
@@ -168,7 +168,7 @@ gulp.task(transformJs, function () {
 });
 ```
 
-2. 处理scss(包括转码、合并、压缩)（[gulp-sass](https://npm.taobao.org/package/gulp-sass)  [gulp-concat](https://npm.taobao.org/package/gulp-concat) [gulp-uglify](https://npm.taobao.org/package/gulp-uglify))）
+### 2. 处理scss(包括转码、合并、压缩)（[gulp-sass](https://npm.taobao.org/package/gulp-sass)  [gulp-concat](https://npm.taobao.org/package/gulp-concat) [gulp-uglify](https://npm.taobao.org/package/gulp-uglify))）
 
 ```
   // scss
@@ -180,7 +180,7 @@ gulp.task(transformJs, function () {
 ```
 
 
-3. 处理less(包括转码、合并、压缩)（[gulp-less](https://npm.taobao.org/package/gulp-less)  [gulp-concat](https://npm.taobao.org/package/gulp-concat) [gulp-uglify](https://npm.taobao.org/package/gulp-uglify))）
+### 3. 处理less(包括转码、合并、压缩)（[gulp-less](https://npm.taobao.org/package/gulp-less)  [gulp-concat](https://npm.taobao.org/package/gulp-concat) [gulp-uglify](https://npm.taobao.org/package/gulp-uglify))）
 
 ```
   // less
@@ -191,7 +191,7 @@ gulp.task(transformJs, function () {
   });
 ```
 
-4. 测试([gulp-jasmine](https://npm.taobao.org/package/gulp-jasmine))
+### 4. 测试([gulp-jasmine](https://npm.taobao.org/package/gulp-jasmine))
 
 ```
   // jasmine
@@ -208,7 +208,7 @@ gulp.task(transformJs, function () {
   });
 ```
 
-5. 清理([gulp-clean](https://npm.taobao.org/package/gulp-clean))
+### 5. 清理([gulp-clean](https://npm.taobao.org/package/gulp-clean))
 
 ```
 gulp.task('clean', function () {
@@ -217,7 +217,7 @@ gulp.task('clean', function () {
 });
 ```
 
-6. 热加载([gulp-util](https://npm.taobao.org/package/gulp-util) [gulp-watch](https://npm.taobao.org/package/gulp-watch))
+### 6. 热加载([gulp-util](https://npm.taobao.org/package/gulp-util) [gulp-watch](https://npm.taobao.org/package/gulp-watch))
 
 ```
   var util = require('gulp-util');
@@ -256,7 +256,7 @@ gulp.task('clean', function () {
 
 ```
 
-7. debug([gulp-print](https://npm.taobao.org/package/gulp-print):处理了哪些文件都会打印出来)
+### 7. debug([gulp-print](https://npm.taobao.org/package/gulp-print):处理了哪些文件都会打印出来)
 
 ```
 //下载
@@ -271,7 +271,7 @@ gulp.task('print', function() {
 });
 ```
 
-8. sourceMap([gulp-sourcemaps](https://npm.taobao.org/package/gulp-sourcemaps))
+### 8. sourceMap([gulp-sourcemaps](https://npm.taobao.org/package/gulp-sourcemaps))
 
 ```
   var sourcemaps = require('gulp-sourcemaps');
@@ -292,7 +292,7 @@ gulp.task('print', function() {
   });
 ```
 
-9. 复制静态资源
+### 9. 复制静态资源
 
 ```
 gulp.task('static-sync', function () {
@@ -301,7 +301,7 @@ gulp.task('static-sync', function () {
 });
 ```
 
-10.处理css雪碧图([gulp-css-spriter](https://npm.taobao.org/package/gulp-css-spriter))
+### 10. 处理css雪碧图([gulp-css-spriter](https://npm.taobao.org/package/gulp-css-spriter))
 
 ```
   var gulp = require('gulp');
