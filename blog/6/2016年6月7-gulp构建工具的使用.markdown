@@ -23,12 +23,12 @@ gulp生态圈有相当多优秀的插件以供我们使用，Gulp 严格的插�
 通过最少的 API，掌握 Gulp 毫不费力，构建工作尽在掌握：如同一系列流管道。
 
 ## 二、gulp相关api
-1. gulp.src: 来源
-2. gulp.dest: 目标
-3. gulp.pipe: 管道
-4. gulp.watch: 监视文件系统，文件改动时自动处理
-5. gulp.task: 任务
-6. gulp.task('default'): 默认任务,必须存在
+1. `gulp.src`: 来源
+2. `gulp.dest`: 目标
+3. `gulp.pipe`: 管道
+4. `gulp.watch`: 监视文件系统，文件改动时自动处理
+5. `gulp.task`: 任务
+6. `gulp.task`('default'): 默认任务,必须存在
 
 ## 三、使用(工作流程)  
 1. 全局安装gulp   
