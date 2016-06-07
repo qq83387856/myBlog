@@ -315,5 +315,77 @@ gulp.task('static-sync', function () {
   });
 ```
 
+### 11. 压缩css([gulp-minify-css](https://npm.taobao.org/package/gulp-minify-css))
+
+```
+  gulp.task(gulp_minify_css,function () {
+     return gulp.src('./dist/*.css')
+         .pipe(print())
+         .pipe(minifycss())
+         .pipe(gulp.dest(config.dist))
+  });
+```
+
+### 12. 压缩图片([gulp-imagemin](https://npm.taobao.org/package/gulp-imagemin))
+
+```
+// 压缩图片
+  gulp.task('img', function() {
+    return gulp.src('src/images/*')
+      .pipe(imagemin({
+          progressive: true,
+          svgoPlugins: [{removeViewBox: false}],
+          use: [pngcrush()]
+      }))
+      .pipe(gulp.dest('./dest/images/'))
+      .pipe(notify({ message: 'img task ok' }));
+  });
+```
+
+### 13. 检查js( [gulp-jshint](https://npm.taobao.org/package/gulp-jshint) [jshint]( [gulp-jshint](https://npm.taobao.org/package/jshint)))
+
+```
+// 检查js
+  gulp.task('lint', function() {
+    return gulp.src('src/js/*.js')
+      .pipe(jshint())
+      .pipe(jshint.reporter('default'))
+      .pipe(notify({ message: 'lint task ok' }));
+  });
+```
+
+### 14. gzip压缩([gulp-gzip](https://npm.taobao.org/package/gulp-gzip))
+
+```
+  var gulp = require('gulp');
+  var gzip = require('gulp-gzip');
+
+  gulp.task('compress', function() {
+      gulp.src('./dev/scripts/*.js')
+      .pipe(gzip())
+      .pipe(gulp.dest('./public/scripts'));
+  });
+```
+
+### 15. 处理前缀([gulp-autoprefixer](https://npm.taobao.org/package/gulp-autoprefixer))
+
+```
+  var gulp = require('gulp');
+  var autoprefixer = require('gulp-autoprefixer');
+
+  gulp.task('default', function () {
+    return gulp.src('src/app.css')
+      .pipe(sourcemaps.init())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(concat('all.css'))
+        .pipe(sourcemaps.write('.',{sourceRoot:config.dist}))
+        .pipe(gulp.dest('dist'));
+  });
+```
+
+
 ## 七、网上配置文件参考
 [gulp-webpack-demo](https://github.com/fwon/gulp-webpack-demo/blob/master/gulpfile.js)
