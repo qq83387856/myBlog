@@ -34,7 +34,7 @@ gulp生态圈有相当多优秀的插件以供我们使用，合理的使用插�
 `npm config set registry https://registry.npm.taobao.org `
 8. 写配置（gulpfile一定有一个default的任务，你可以把每个任务分文件书写然后再require进来，这种方式适合多人同时书写任务时，可以防止多人修改同一文件导致的冲突）
 
-``
+```
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 var react = require("gulp-react");
