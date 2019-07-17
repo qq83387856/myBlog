@@ -1,0 +1,66 @@
+﻿body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 75%;
+    color: rgb(51, 51, 51);
+    cursor: default;
+}
+
+.ng-hide {
+    display: block !important;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.feature-flags {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.feature-info {
+    padding-top: 15px;
+}
+
+.feature-info .content {
+    padding-left: 18px;
+    width: 450px;
+}
+
+.traces-link {
+    padding-top: 5px;
+}
+
+.title {
+    padding-bottom: 5px;
+}
+
+.disableVideoOption {
+    color: #BEBEBE;
+}
+
+.show-traces-button {
+     background:none!important;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     text-decoration: underline;
+     cursor: pointer;
+     color: rgb(17, 85, 204);
+     margin-left: -5px;
+     box-shadow: none !important;
+}
+
+.action-log-count-container {
+        padding-left: 18px;
+        padding-top: 10px;
+}
+
+.action-log-count-number {
+    height: 15px;
+    width: 50px;
+}
+
+
+.action-log-count-error {
+    background-color: red;
+}

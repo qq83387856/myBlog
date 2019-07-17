@@ -1,0 +1,51 @@
+<application>
+  <component name="SexyEditor">
+    <option name="configs">
+      <list>
+        <BackgroundConfiguration>
+          <option name="fileNames">
+            <array>
+              <option value="E:\download\background\bg-1.jpg" />
+              <option value="E:\download\background\bg-10.jpg" />
+              <option value="E:\download\background\bg-11.jpg" />
+              <option value="E:\download\background\bg-12.jpg" />
+              <option value="E:\download\background\bg-13.jpg" />
+              <option value="E:\download\background\bg-14.jpg" />
+              <option value="E:\download\background\bg-15.jpg" />
+              <option value="E:\download\background\bg-16.jpg" />
+              <option value="E:\download\background\bg-17.jpg" />
+              <option value="E:\download\background\bg-18.jpg" />
+              <option value="E:\download\background\bg-19.jpg" />
+              <option value="E:\download\background\bg-2.jpg" />
+              <option value="E:\download\background\bg-20.jpg" />
+              <option value="E:\download\background\bg-21.jpg" />
+              <option value="E:\download\background\bg-22.jpg" />
+              <option value="E:\download\background\bg-23.jpg" />
+              <option value="E:\download\background\bg-24.jpg" />
+              <option value="E:\download\background\bg-25.jpg" />
+              <option value="E:\download\background\bg-28.jpg" />
+              <option value="E:\download\background\bg-29.jpg" />
+              <option value="E:\download\background\bg-3.jpg" />
+              <option value="E:\download\background\bg-30.jpg" />
+              <option value="E:\download\background\bg-31.jpg" />
+              <option value="E:\download\background\bg-32.jpg" />
+              <option value="E:\download\background\bg-33.jpg" />
+              <option value="E:\download\background\bg-34.jpg" />
+              <option value="E:\download\background\bg-35.jpg" />
+              <option value="E:\download\background\bg-4.jpg" />
+              <option value="E:\download\background\bg-5.jpg" />
+              <option value="E:\download\background\bg-6.jpg" />
+              <option value="E:\download\background\bg-7.jpg" />
+              <option value="E:\download\background\bg-8.jpg" />
+              <option value="E:\download\background\bg-9.jpg" />
+            </array>
+          </option>
+          <option name="position" value="4" />
+          <option name="random" value="true" />
+          <option name="shrink" value="true" />
+          <option name="shrinkValue" value="100" />
+        </BackgroundConfiguration>
+      </list>
+    </option>
+  </component>
+</application>

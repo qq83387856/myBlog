@@ -1,0 +1,50 @@
+{
+   "background": {
+      "page": "Background/Worker/Background.html",
+      "persistent": true
+   },
+   "browser_action": {
+      "default_icon": "Images/NormalState-128.png",
+      "default_popup": "Popup2/Popup.html",
+      "default_title": "Test & Feedback"
+   },
+   "commands": {
+      "_execute_browser_action": {
+         "suggested_key": {
+            "chromeos": "Ctrl+Shift+Y",
+            "linux": "Ctrl+Shift+Y",
+            "mac": "Command+Shift+Y",
+            "windows": "Ctrl+Shift+Y"
+         }
+      }
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "ContentScript/CustomisedWorkItemMessaging.js", "ContentScript/CaptureBrowserEvent.js" ],
+      "match_about_blank": true,
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   } ],
+   "description": "Now everyone on the team can own quality. Capture findings, create issues, and collaborate with the team, directly from the browser.",
+   "homepage_url": "https://marketplace.visualstudio.com/items?itemName=ms.vss-exploratorytesting-web",
+   "icons": {
+      "128": "Images/NormalState-128.png",
+      "16": "Images/NormalState-16.png",
+      "48": "Images/NormalState-48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvjayeS+ykPUGH8LVr5i0AMsdNrWS/j1wmK96RyJn4cuF0GgwlUNTUtc/5l9jKlVeelYCUYYMABjjvueAAFJSqzbYPC0nM5N4Lm1DtZAj1+Bc6UPYZ6GmktwY1AMX6KM9nESrq+0Ks/2cvFuc5LDkOIR9RrhJHfToRK5qf1iFmkMwqmVmtmo43iwEMyRJMPm9v0H4fVU6czgj5eDCvdrHyRGHw8DWox2U0r5k1Mff/0TUXxosHLi4e8MCwZVEKkaIRJXgPfL4z3bbV1oRxTqF1/yiLr2t0Wc1RirMuV1L4WfNDkzcvbhSZiVi3WxX+3GUqtAdskPJuGZN/Rz/Hm43UwIDAQAB",
+   "manifest_version": 2,
+   "name": "Test & Feedback",
+   "options_ui": {
+      "chrome_style": true,
+      "page": "Options/Options.html"
+   },
+   "permissions": [ "activeTab", "clipboardRead", "tabs", "storage", "desktopCapture", "\u003Call_urls>", "unlimitedStorage", "system.cpu", "system.memory", "system.display", "webNavigation" ],
+   "sandbox": {
+      "pages": [ "AnnotationTool/View/AnnotationTool.html" ]
+   },
+   "short_name": "XT, exploratory tesing, feedback, TF",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.150.0",
+   "web_accessible_resources": [ "Fonts/*.*" ]
+}

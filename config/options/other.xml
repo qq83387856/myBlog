@@ -1,0 +1,54 @@
+<application>
+  <component name="NodeJsLocalInterpreters">
+    <local-interpreter path="C:/Program Files/nodejs/node.exe">
+      <version-cache version="8.11.2" last-modified="1526379546000" />
+    </local-interpreter>
+  </component>
+  <component name="NotRoamableUiSettings">
+    <option name="fontScale" value="1.0" />
+    <option name="fontSize" value="16" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ColorChooser.RecentColors" value="231-76-60-255,,,255-136-204-255,,,248-196-113-255,,,241-196-15-255,,,39-174-96-255,,,130-224-170-255,,,144-148-151-255" />
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.77565634" />
+    <property name="CommittedChanges.SplitterProportions.0" value="700" />
+    <property name="CommittedChanges.SplitterProportions.1" value="500" />
+    <property name="Copy.OpenInEditor" value="true" />
+    <property name="Default.SavedEditorTheme" value="_@user_Default" />
+    <property name="ExpandBeforeRunStepsPanel" value="true" />
+    <property name="ExpandRunDashboardTypesPanel" value="false" />
+    <property name="FileTemplates.SelectedTemplate" value="HTML File" />
+    <property name="InstalledPluginsSearchHistory" value="power&#10;theme&#10;angular" />
+    <property name="JSHintOptionsTreeView.TREE_SCROLL_BAR_HORIZONTAL" value="23" />
+    <property name="JSHintOptionsTreeView.TREE_SCROLL_BAR_VERTICAL" value="0" />
+    <property name="JSHintOptionsTreeView.TREE_SELECTED_NODE_ID" value="1" />
+    <property name="KEYMAP" value="fetch" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="SettingsSearchHistory" value="encod&#10;code co&#10;tslint&#10;javascript&#10;file type" />
+    <property name="SplitFileEditor.Proportion" value="0.15" />
+    <property name="TrendingPluginsSearchHistory" value="TabNine&#10;power&#10;themee&#10;Material Theme UI&#10;rainbow brackets" />
+    <property name="Vcs.Log.Text.Filter.History" value="切り&#10;霧&#10;コピー&#10;3951&#10;更新" />
+    <property name="WebStorm.enableDefaultTooltipFixes" value="true" />
+    <property name="WebStorm.enableSmartQuotes" value="true" />
+    <property name="WebStorm.initialConfigurationShown" value="true" />
+    <property name="cn.yiiguxing.plugin.translate.version" value="2.3.6" />
+    <property name="com.intellij.history.integration.ui.views.FileHistoryDialog.0" value="300" />
+    <property name="com.intellij.history.integration.ui.views.FileHistoryDialog.1" value="800" />
+    <property name="evlsprt.191" value="16b91d40f44" />
+    <property name="evlsprt2.191" value="16b2ffb676e" />
+    <property name="evlsprt3.191" value="19" />
+    <property name="file.chooser.recent.files" value="E:/workspace/xiaomo.info&#10;C:/Users/g10016851/AppData/Roaming/npm/blog&#10;C:/Users/g10016851/AppData/Roaming/npm&#10;E:/workspace/StudingRecord&#10;E:/angular-workspace/sma-navi/angular/rsn&#10;C:/Users/g10016851/Documents/workspace/react/packages/react&#10;C:/Users/g10016851/Documents/workspace&#10;C:/Users/g10016851/Documents/workspace/ant-design-pro&#10;C:/Users/g10016851/Documents/workspace/gitignore&#10;C:/Users/g10016851/Documents/workspace/StudingRecord/about-nihonngo&#10;C:/Users/g10016851/Documents/webapp/webapps/rsn&#10;C:/Users/g10016851/Documents/angular-workspace/sma-navi/angular/rsn/src/app/main/containers/dialogs/input-name-dialog&#10;C:/Users/g10016851/Downloads/settings.zip&#10;C:/Users/g10016851/Documents/workspace/blog&#10;C:/Users/g10016851/Documents/angular-workspace/sma-navi/angular/rsn&#10;C:/Users/g10016851/Documents/angular-workspace/sma-navi" />
+    <property name="file.gist.reindex.count" value="70462" />
+    <property name="fileTypeChangedCounter" value="25" />
+    <property name="find.popup.splitter" value="0.61504424" />
+    <property name="js.chrome.debugger.port.98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" value="62193" />
+    <property name="js.rename.search.for.text.occurrences" value="false" />
+    <property name="js.rename.search.in.comments" value="true" />
+    <property name="krasa.grepconsole.gui.CompositeSettingsDialog" value="751" />
+    <property name="mt.showStatisticsAgreement" value="true" />
+    <property name="settings.code.style.selected.tab.TypeScript" value="Spaces" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="ts.lib.d.ts.version" value="3.4.1" />
+  </component>
+</application>

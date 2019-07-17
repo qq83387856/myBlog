@@ -1,0 +1,11 @@
+2019/07/17-11:34:09.976 4cfc Reusing MANIFEST leveldb/MANIFEST-000001
+2019/07/17-11:34:09.979 4cfc Recovering log #3
+2019/07/17-11:34:09.979 4cfc Level-0 table #3: started
+2019/07/17-11:34:09.985 4cfc Level-0 table #3: 17801 bytes OK
+2019/07/17-11:34:09.987 4cfc Recovering log #4
+2019/07/17-11:34:09.989 4cfc Reusing old log leveldb/000004.log 
+2019/07/17-11:34:09.991 4cfc Delete type=0 #3
+2019/07/17-11:34:09.992 4cfc Delete type=2 #5
+2019/07/17-13:03:18.626 600 Level-0 table #6: started
+2019/07/17-13:03:18.632 600 Level-0 table #6: 25458 bytes OK
+2019/07/17-13:03:18.634 600 Delete type=0 #4

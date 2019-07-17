@@ -1,0 +1,74 @@
+﻿<html>
+<head>
+    <script src="../../Scripts/jquery.min.js"></script>
+    <script src="../../Scripts/jquery-ui.min.js"></script>
+    <script src="../../Scripts/knockout-3.3.0.js"></script>
+    <script src="../../Scripts/knockout-secure-binding.min.js"></script>
+    <script src="../../Scripts/raphael-min.js"></script>
+    <script src="../../Scripts/require.js"></script>
+    <script src="../../Scripts/loaderConfig.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Style/AnnotationTool.css" />
+</head>
+<body>
+        <!-- knockout templates-->
+        <script id="color_grid_template" type="text/html">
+            <div class="color-popup-body" tabindex="0" data-sbind="palletVisible: showColorPallet">
+                <div class="color-grid" data-sbind="foreach: colors">
+                    <!--color grid section-->
+                    <div class="color-picker-patch-container" tabindex="0"
+                         data-sbind="css: { 'color-patch-selected': colorHex == parent.selectedColor() },
+                                attr: { 'title': colorName },
+                                click: onSelectColor,
+                                event: {keydown: keyDownOnRectangle}">
+                        <div class="color-picker-patch" data-sbind="css: { 'color-patch-selected': colorHex == parent.selectedColor() }">
+                            <svg focusable="false" class="chart-surface" width="100%" height="100%">
+                                <rect class="legend-color" width="100%" height="100%" data-sbind="style: {fill: colorHex}"></rect>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <div id="annotation-toolbar" class="annotation-toolbar" data-sbind="css: {show: !switchMode()}">
+            <!-- ko with: toolbarViewModel -->
+            <div class="gripper" title="Drag to move toolbar"></div>
+            <div class="screenshot-name" data-sbind="css: {'error': !isImageNameValid()}, attr: {'title': imageToolTip }">
+                <input id="image-name-input" class="screenshot-name-input" data-sbind="value: imageName, event: {keyup: keyUpOnImageNameInput, blur: keyUpOnImageNameInput, input: keyUpOnImageNameInput} " maxlength="256">
+                <div id="screenshot-name-error" class="screenshot-name-error" data-sbind="css: {'visible': !isImageNameValid()}">
+                </div>
+            </div>
+            <div class="tools">
+                <div data-sbind="foreach: tools">
+                    <div class="tool">
+                        <div class="tool-icon" data-sbind="attr: {title: tooltip}, font: font, css: cssClass, click: execute, event: {keydown: keyDown}" tabindex="0"></div>
+
+                        <!-- ko if: showPallet -->
+                        <img class="color-selector" src="../Images/ColorSelector.png" data-sbind="click: openPallet, event: {keydown: keyDownColorSelector}" tabindex="0"/>
+                        <div data-sbind="template: {name: 'color_grid_template', data: colorPallet}"></div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <div class="crop-toolbar" data-sbind="visible: switchMode">
+            <div class="fullscreen-image" data-sbind="click: switchCropMode, event: {keydown: keyDown}" tabindex="0"></div>
+        </div>
+
+        <!-- ko with: drawingAreaViewModel -->
+        <div id="annotation-area" class="annotation-area" tabindex="0" data-sbind="css: {crosshairs: !crossHairsLinesModeOn()}, event: {mousedown: mouseDown, mousemove: mouseMove, mouseup: mouseUp}">
+            <canvas id="original-canvas" class="original-canvas"></canvas>
+            <canvas id="annotated-canvas" class="annotated-canvas"></canvas>
+            <canvas id="drawing-canvas" class="drawing-canvas"></canvas>
+            <div id="svg-area" class="svg-area"></div>
+        </div>
+        <div class="textarea">
+            <textarea id="text-area" data-sbind="event: {keydown: keyDown, blur: focusOut, input: keyDown}" class="text-area" autofocus></textarea>
+        </div>
+        <!-- /ko -->
+
+</body>
+</html>

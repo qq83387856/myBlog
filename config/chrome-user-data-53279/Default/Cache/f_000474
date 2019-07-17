@@ -1,0 +1,286 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["login-login-module"],{
+
+/***/ "./src/app/core/models/authentication-error.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/core/models/authentication-error.ts ***!
+  \*****************************************************/
+/*! exports provided: AuthenticationError */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthenticationError", function() { return AuthenticationError; });
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _rsn_rest_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../rsn-rest-api */ "./src/app/core/rsn-rest-api.ts");
+
+
+/**
+ * 認証APIのエラー
+ */
+var AuthenticationError = /** @class */ (function () {
+    function AuthenticationError(error) {
+        this.error = error;
+    }
+    /**
+     * エラーがRSN REST APIのエラーならサーバーから得られるメッセージを得る
+     */
+    AuthenticationError.prototype.getMessage = function () {
+        if (!(this.error instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpErrorResponse"])) {
+            return this.error.toString();
+        }
+        var errorResponse = this.error;
+        var httpStatus = errorResponse.status;
+        if (httpStatus === _rsn_rest_api__WEBPACK_IMPORTED_MODULE_1__["RsnRestApi"].errorStatus) {
+            var rsnError = errorResponse.error;
+            return rsnError.messageDetail || '';
+        }
+        else {
+            return errorResponse.statusText;
+        }
+    };
+    return AuthenticationError;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/components/login/login.component.html":
+/*!*************************************************************!*\
+  !*** ./src/app/login/components/login/login.component.html ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"messageArea center\">\r\n  <h3>This is a development mode login page</h3>\r\n  <p>\r\n    then redirected to <strong class=\"emphasis\"> /{{ redirectUrl$ | async }} </strong>\r\n  </p>\r\n</div>\r\n\r\n<div class=\"TitleArea center\"></div>\r\n\r\n<div class=\"container center-form\">\r\n  <form #loginForm=\"ngForm\" class=\"form-container\">\r\n    <div class=\"form-group\">\r\n      <label for=\"InputLogin\">ログイン名：</label>\r\n      <input\r\n        type=\"text\"\r\n        class=\"form-control\"\r\n        id=\"InputLogin\"\r\n        name=\"loginName\"\r\n        [maxlength]=\"maxAccountName\"\r\n        [(ngModel)]=\"accountName\"\r\n        autofocus\r\n      />\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"InputPassword\">パスワード：</label>\r\n      <input type=\"password\" class=\"form-control\" id=\"InputPassword\" name=\"password\" maxlength=\"maxPassword\" [(ngModel)]=\"password\" />\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"InputDomain\">ドメイン：</label>\r\n      <input type=\"text\" class=\"form-control\" id=\"InputDomain\" name=\"domainName\" maxlength=\"maxDomain\" [(ngModel)]=\"domain\" />\r\n    </div>\r\n\r\n    <button type=\"submit\" class=\"submit right-align\" (click)=\"login()\">ログイン</button>\r\n    <br />\r\n    <div class=\"form-group\">\r\n      <label for=\"InputDomain\">文書ID：</label>\r\n      <input type=\"text\" class=\"form-control\" id=\"DocumentId\" name=\"documentId\" [(ngModel)]=\"documentId\" />\r\n    </div>\r\n    <button type=\"submit\" class=\"submit right-align\" (click)=\"login(true)\">Viewerログイン</button>\r\n\r\n    <div class=\"form-group\">\r\n      <label></label>\r\n      <div class=\"form-control\">{{ accountName }}</div>\r\n    </div>\r\n  </form>\r\n  <iframe #cookieIframe [src]=\"cookieIframeSrc\" height=\"0px\" width=\"0px\"></iframe>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/login/components/login/login.component.scss":
+/*!*************************************************************!*\
+  !*** ./src/app/login/components/login/login.component.scss ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "@charset \"UTF-8\";\n* {\n  font-family: 'メイリオ', 'MS PGothic', 'sans-serif';\n  font-size: 16px; }\n.center {\n  width: 40em;\n  margin: 0 auto; }\n.center-form {\n  width: 30em;\n  margin: 0 auto; }\n.right-align {\n  margin-left: auto;\n  margin-right: 0; }\n.emphasis {\n  color: salmon; }\n.form-container {\n  display: flex;\n  flex-flow: column nowrap;\n  align-content: center; }\n.form-container .form-group {\n    margin: 0.2em;\n    align-items: center;\n    display: flex; }\n.form-container .form-group label {\n      text-align: right;\n      width: 6em;\n      font-weight: bold;\n      font-size: 1em; }\n.form-container .form-group .form-control {\n      flex: 1 1 auto; }\n.form-container .form-group input {\n      border-radius: 2px; }\n.form-container .submit {\n    margin-top: 0.2em;\n    width: 10em;\n    border-radius: 4px; }\n.messageArea {\n  text-align: center;\n  width: 640px; }\n/* Title Area\r\n---------- ---------- */\n.TitleArea {\n  width: 640px;\n  margin-top: 20px;\n  margin-bottom: 10px;\n  height: 204px;\n  color: #004790;\n  background: #b0ffff url('bg_titlearea.png') 0 0 no-repeat; }\n.TitleArea h1 {\n    margin: 0;\n    padding: 80px 0 0;\n    font-weight: bold; }\n.TitleArea p.Version {\n    margin: 0;\n    padding: 117px 0 0; }\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbG9naW4vY29tcG9uZW50cy9sb2dpbi9DOlxcVXNlcnNcXGcxMDAxNjg1MVxcRG9jdW1lbnRzXFxhbmd1bGFyLXdvcmtzcGFjZVxcc21hLW5hdmlcXGFuZ3VsYXJcXHJzbi9zcmNcXGFwcFxcbG9naW5cXGNvbXBvbmVudHNcXGxvZ2luXFxsb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEI7RUFDRSwrQ0FBYTtFQUNiLGVBQWUsRUFBQTtBQVFqQjtFQUpFLFdBS29CO0VBSnBCLGNBQWMsRUFBQTtBQU9oQjtFQVJFLFdBU29CO0VBUnBCLGNBQWMsRUFBQTtBQVdoQjtFQUNFLGlCQUFpQjtFQUNqQixlQUFlLEVBQUE7QUFHakI7RUFDRSxhQUFhLEVBQUE7QUFHZjtFQUNFLGFBQWE7RUFDYix3QkFBd0I7RUFDeEIscUJBQXFCLEVBQUE7QUFIdkI7SUFNSSxhQUFhO0lBQ2IsbUJBQW1CO0lBRW5CLGFBQWEsRUFBQTtBQVRqQjtNQVlNLGlCQUFpQjtNQUNqQixVQUFVO01BQ1YsaUJBQWlCO01BQ2pCLGNBQWMsRUFBQTtBQWZwQjtNQW1CTSxjQUFjLEVBQUE7QUFuQnBCO01BdUJNLGtCQUFrQixFQUFBO0FBdkJ4QjtJQTRCSSxpQkFBaUI7SUFDakIsV0FBVztJQUNYLGtCQUFrQixFQUFBO0FBSXRCO0VBQ0Usa0JBQWtCO0VBQ2xCLFlBQVksRUFBQTtBQUdkO3VCRG5CdUI7QUNxQnZCO0VBQ0UsWUFBWTtFQUNaLGdCQUFnQjtFQUNoQixtQkFBbUI7RUFFbkIsYUFBYTtFQUNiLGNBQWM7RUFDZCx5REFBa0YsRUFBQTtBQVBwRjtJQVVJLFNBQVM7SUFDVCxpQkFBaUI7SUFDakIsaUJBQWlCLEVBQUE7QUFackI7SUFnQkksU0FBUztJQUNULGtCQUFrQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbG9naW4vY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBjaGFyc2V0IFwiVVRGLThcIjtcbioge1xuICBmb250LWZhbWlseTogJ+ODoeOCpOODquOCqicsICdNUyBQR290aGljJywgJ3NhbnMtc2VyaWYnO1xuICBmb250LXNpemU6IDE2cHg7IH1cblxuLmNlbnRlciB7XG4gIHdpZHRoOiA0MGVtO1xuICBtYXJnaW46IDAgYXV0bzsgfVxuXG4uY2VudGVyLWZvcm0ge1xuICB3aWR0aDogMzBlbTtcbiAgbWFyZ2luOiAwIGF1dG87IH1cblxuLnJpZ2h0LWFsaWduIHtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogMDsgfVxuXG4uZW1waGFzaXMge1xuICBjb2xvcjogc2FsbW9uOyB9XG5cbi5mb3JtLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcbiAgYWxpZ24tY29udGVudDogY2VudGVyOyB9XG4gIC5mb3JtLWNvbnRhaW5lciAuZm9ybS1ncm91cCB7XG4gICAgbWFyZ2luOiAwLjJlbTtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGRpc3BsYXk6IGZsZXg7IH1cbiAgICAuZm9ybS1jb250YWluZXIgLmZvcm0tZ3JvdXAgbGFiZWwge1xuICAgICAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gICAgICB3aWR0aDogNmVtO1xuICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICBmb250LXNpemU6IDFlbTsgfVxuICAgIC5mb3JtLWNvbnRhaW5lciAuZm9ybS1ncm91cCAuZm9ybS1jb250cm9sIHtcbiAgICAgIGZsZXg6IDEgMSBhdXRvOyB9XG4gICAgLmZvcm0tY29udGFpbmVyIC5mb3JtLWdyb3VwIGlucHV0IHtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDJweDsgfVxuICAuZm9ybS1jb250YWluZXIgLnN1Ym1pdCB7XG4gICAgbWFyZ2luLXRvcDogMC4yZW07XG4gICAgd2lkdGg6IDEwZW07XG4gICAgYm9yZGVyLXJhZGl1czogNHB4OyB9XG5cbi5tZXNzYWdlQXJlYSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2lkdGg6IDY0MHB4OyB9XG5cbi8qIFRpdGxlIEFyZWFcclxuLS0tLS0tLS0tLSAtLS0tLS0tLS0tICovXG4uVGl0bGVBcmVhIHtcbiAgd2lkdGg6IDY0MHB4O1xuICBtYXJnaW4tdG9wOiAyMHB4O1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICBoZWlnaHQ6IDIwNHB4O1xuICBjb2xvcjogIzAwNDc5MDtcbiAgYmFja2dyb3VuZDogI2IwZmZmZiB1cmwoXCIuLy4uLy4uLy4uLy4uL2Fzc2V0cy9kZXYvYmdfdGl0bGVhcmVhLnBuZ1wiKSAwIDAgbm8tcmVwZWF0OyB9XG4gIC5UaXRsZUFyZWEgaDEge1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiA4MHB4IDAgMDtcbiAgICBmb250LXdlaWdodDogYm9sZDsgfVxuICAuVGl0bGVBcmVhIHAuVmVyc2lvbiB7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDExN3B4IDAgMDsgfVxuIiwiKiB7XHJcbiAgZm9udC1mYW1pbHk6ICfjg6HjgqTjg6rjgqonLCAnTVMgUEdvdGhpYycsICdzYW5zLXNlcmlmJztcclxuICBmb250LXNpemU6IDE2cHg7XHJcbn1cclxuXHJcbkBtaXhpbiBjZW50ZXIoJHdpZHRoKSB7XHJcbiAgd2lkdGg6ICR3aWR0aDtcclxuICBtYXJnaW46IDAgYXV0bztcclxufVxyXG5cclxuLmNlbnRlciB7XHJcbiAgQGluY2x1ZGUgY2VudGVyKDQwZW0pO1xyXG59XHJcblxyXG4uY2VudGVyLWZvcm0ge1xyXG4gIEBpbmNsdWRlIGNlbnRlcigzMGVtKTtcclxufVxyXG5cclxuLnJpZ2h0LWFsaWduIHtcclxuICBtYXJnaW4tbGVmdDogYXV0bztcclxuICBtYXJnaW4tcmlnaHQ6IDA7XHJcbn1cclxuXHJcbi5lbXBoYXNpcyB7XHJcbiAgY29sb3I6IHNhbG1vbjtcclxufVxyXG5cclxuLmZvcm0tY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcclxuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XHJcblxyXG4gIC5mb3JtLWdyb3VwIHtcclxuICAgIG1hcmdpbjogMC4yZW07XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG5cclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcblxyXG4gICAgbGFiZWwge1xyXG4gICAgICB0ZXh0LWFsaWduOiByaWdodDtcclxuICAgICAgd2lkdGg6IDZlbTtcclxuICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICAgIGZvbnQtc2l6ZTogMWVtO1xyXG4gICAgfVxyXG5cclxuICAgIC5mb3JtLWNvbnRyb2wge1xyXG4gICAgICBmbGV4OiAxIDEgYXV0bztcclxuICAgIH1cclxuXHJcbiAgICBpbnB1dCB7XHJcbiAgICAgIGJvcmRlci1yYWRpdXM6IDJweDtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC5zdWJtaXQge1xyXG4gICAgbWFyZ2luLXRvcDogMC4yZW07XHJcbiAgICB3aWR0aDogMTBlbTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICB9XHJcbn1cclxuXHJcbi5tZXNzYWdlQXJlYSB7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIHdpZHRoOiA2NDBweDtcclxufVxyXG5cclxuLyogVGl0bGUgQXJlYVxyXG4tLS0tLS0tLS0tIC0tLS0tLS0tLS0gKi9cclxuLlRpdGxlQXJlYSB7XHJcbiAgd2lkdGg6IDY0MHB4O1xyXG4gIG1hcmdpbi10b3A6IDIwcHg7XHJcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAvLyAgcGFkZGluZzogMCAyMHB4O1xyXG4gIGhlaWdodDogMjA0cHg7XHJcbiAgY29sb3I6ICMwMDQ3OTA7XHJcbiAgYmFja2dyb3VuZDogI2IwZmZmZiB1cmwoJy4vLi4vLi4vLi4vLi4vYXNzZXRzL2Rldi9iZ190aXRsZWFyZWEucG5nJykgMCAwIG5vLXJlcGVhdDtcclxuXHJcbiAgaDEge1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgcGFkZGluZzogODBweCAwIDA7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICB9XHJcblxyXG4gIHAuVmVyc2lvbiB7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBwYWRkaW5nOiAxMTdweCAwIDA7XHJcbiAgfVxyXG59XHJcbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/login/components/login/login.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/login/components/login/login.component.ts ***!
+  \***********************************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _core_services_logger_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../core/services/logger.service */ "./src/app/core/services/logger.service.ts");
+/* harmony import */ var _core_services_login_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../core/services/login.service */ "./src/app/core/services/login.service.ts");
+/* harmony import */ var _core_services_routing_manage_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../core/services/routing-manage.service */ "./src/app/core/services/routing-manage.service.ts");
+/* harmony import */ var _core_services_url_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../core/services/url.config */ "./src/app/core/services/url.config.ts");
+/* harmony import */ var _core_storage_key__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../core/storage-key */ "./src/app/core/storage-key.ts");
+/* harmony import */ var _core_utils_subscription_manager__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../core/utils/subscription-manager */ "./src/app/core/utils/subscription-manager.ts");
+/* harmony import */ var _core_models_authentication_error__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./../../../core/models/authentication-error */ "./src/app/core/models/authentication-error.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * 開発用ログインページです
+ *
+ * 認証を依頼し、ガードされたページにナビゲートします
+ */
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(logger, loginService, sanitizer, routingManager) {
+        this.logger = logger;
+        this.loginService = loginService;
+        this.sanitizer = sanitizer;
+        this.routingManager = routingManager;
+        this.maxAccountName = 32;
+        this.maxPassword = 128;
+        this.maxDomain = 255;
+        this.subscription = new _core_utils_subscription_manager__WEBPACK_IMPORTED_MODULE_10__["SubscriptionManager"]();
+        // http://サーバー/rsn/dist/assets/cookieWriter.htmlにファイルが存在する前提です
+        this.cookieIframeSrc = sanitizer.bypassSecurityTrustResourceUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].apiOrigin + _core_services_url_config__WEBPACK_IMPORTED_MODULE_8__["urlConfig"].baseHref + '/dist/assets/cookieWriter.html');
+        console.log('iframe src=' + this.cookieIframeSrc);
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+        // 何か文字列をセットしておがないとundefinedのまま
+        this.accountName = '';
+        this.password = '';
+        this.domain = '';
+        this.documentId = '';
+        this.redirectUrl$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(this.loginService.getRedirectUrl());
+    };
+    LoginComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribeAll();
+    };
+    /**
+     * ログインに成功したらナビゲートします
+     */
+    LoginComponent.prototype.login = function (isViewer) {
+        var _this = this;
+        document.body.style.cursor = 'wait';
+        this.subscription.set('login', this.loginService.login(this.accountName.trim(), this.password.trim(), this.domain.trim()).subscribe(
+        // onSucceeded
+        function (succeeded) {
+            _this.logger.info('Login result ', succeeded);
+            document.body.style.cursor = 'auto';
+            if (isViewer) {
+                // Viewerに遷移させる
+                _this.loginService.setRedirectUrl('');
+                _this.loginService.queryParams = { queryParams: { appId: 'Viewer', DocID: _this.documentId } };
+                // Viewer用のルーティング設定で上書きする
+                _this.routingManager.setConfigForViewer();
+            }
+            else if (!_this.loginService.getRedirectUrl()) {
+                // リダイレクト先が存在しない場合はMainに遷移させる
+                _this.loginService.setRedirectUrl('');
+                // Main用のルーティング設定で上書きする
+                _this.routingManager.setConfigForMain();
+            }
+            // cookie ifrmeにセッションIDを通知する
+            var accessToken = localStorage.getItem(_core_storage_key__WEBPACK_IMPORTED_MODULE_9__["StorageKey"].token);
+            var iframeWindow = _this.cookieIframe && _this.cookieIframe.nativeElement && _this.cookieIframe.nativeElement.contentWindow;
+            if (iframeWindow) {
+                console.log('do postMessage: ' + accessToken);
+                iframeWindow.postMessage(accessToken, '*');
+            }
+            // 遷移するとiframeが消えるのでcookieが書き終わる前に遷移しないよう待ち時間を入れている
+            setTimeout(function () { return _this.loginService.navigate(); }, 500);
+        }, 
+        // onError
+        function (error) {
+            document.body.style.cursor = 'auto';
+            var authError = new _core_models_authentication_error__WEBPACK_IMPORTED_MODULE_11__["AuthenticationError"](error);
+            window.alert(authError.getMessage());
+        }, 
+        // completed
+        function () {
+            _this.logger.info('login completed.');
+        }));
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('cookieIframe', { read: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
+    ], LoginComponent.prototype, "cookieIframe", void 0);
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/components/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/login/components/login/login.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_core_services_logger_service__WEBPACK_IMPORTED_MODULE_5__["Logger"],
+            _core_services_login_service__WEBPACK_IMPORTED_MODULE_6__["LoginService"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"],
+            _core_services_routing_manage_service__WEBPACK_IMPORTED_MODULE_7__["RoutingManageService"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/login-routing.module.ts":
+/*!***********************************************!*\
+  !*** ./src/app/login/login-routing.module.ts ***!
+  \***********************************************/
+/*! exports provided: LoginRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginRoutingModule", function() { return LoginRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/login/components/login/login.component.ts");
+
+
+
+
+/**
+ * LoginModuleのルーティング設定
+ */
+var loginRoutes = [{ path: '', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] }];
+/**
+ * LoginModuleのルーティングモジュール
+ */
+var LoginRoutingModule = /** @class */ (function () {
+    function LoginRoutingModule() {
+    }
+    LoginRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(loginRoutes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], LoginRoutingModule);
+    return LoginRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/login.module.ts":
+/*!***************************************!*\
+  !*** ./src/app/login/login.module.ts ***!
+  \***************************************/
+/*! exports provided: LoginModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginModule", function() { return LoginModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/login/components/login/login.component.ts");
+/* harmony import */ var _login_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login-routing.module */ "./src/app/login/login-routing.module.ts");
+
+
+
+
+
+
+/**
+ * 開発用ログインページを提供するモジュール
+ *
+ * 製品版ではjspのログインページが表示される
+ */
+var LoginModule = /** @class */ (function () {
+    function LoginModule() {
+    }
+    LoginModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+            imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _login_routing_module__WEBPACK_IMPORTED_MODULE_5__["LoginRoutingModule"]],
+            declarations: [_components_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"]]
+        })
+    ], LoginModule);
+    return LoginModule;
+}());
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=login-login-module.js.map

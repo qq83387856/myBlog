@@ -1,0 +1,6 @@
+2019/06/17-13:28:57.778 bf4 Reusing MANIFEST leveldb/MANIFEST-000001
+2019/06/17-13:28:57.781 bf4 Recovering log #228
+2019/06/17-13:28:57.783 bf4 Reusing old log leveldb/000228.log 
+2019/06/17-14:26:20.536 448c Level-0 table #232: started
+2019/06/17-14:26:20.575 448c Level-0 table #232: 18987 bytes OK
+2019/06/17-14:26:20.609 448c Delete type=0 #228

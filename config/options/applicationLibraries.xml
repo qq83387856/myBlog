@@ -1,0 +1,21 @@
+<application>
+  <component name="libraryTable">
+    <library name="Bundled Protobuf Distribution">
+      <CLASSES />
+      <SOURCES>
+        <root url="jar://$APPLICATION_PLUGINS_DIR$/protobuf-jetbrains-plugin/lib/protobuf-java-3.6.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="busuanzi.pure.mini" type="javaScript">
+      <properties>
+        <sourceFilesUrls>
+          <item url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/__busuanzi.ibruce.info_busuanzi_2.3_busuanzi.pure.mini.js" />
+        </sourceFilesUrls>
+      </properties>
+      <CLASSES>
+        <root url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/__busuanzi.ibruce.info_busuanzi_2.3_busuanzi.pure.mini.js" />
+      </CLASSES>
+      <SOURCES />
+    </library>
+  </component>
+</application>

@@ -1,0 +1,1 @@
+The <a href="/en-US/docs/Web/API/EventTarget" title="EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them."><code>EventTarget</code></a> method <code><strong>addEventListener()</strong></code> sets up a function that will be called whenever the specified event is delivered to the target.

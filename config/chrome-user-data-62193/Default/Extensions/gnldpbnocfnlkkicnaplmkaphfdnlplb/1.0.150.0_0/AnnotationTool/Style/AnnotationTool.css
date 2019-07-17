@@ -1,0 +1,354 @@
+body {
+    margin: 0;
+    font-family: Segoe UI, Tahoma, Arial, Verdana;
+}
+
+@font-face {
+    font-family: segoe;
+    src: url("../../Fonts/segoe.ttf");
+}
+
+
+/*annotation toolbar settings*/
+.annotation-toolbar {
+    position: absolute;
+    z-index: 100;
+    width: 611px;
+    height: 40px;
+    display: none;
+    background-color: white;
+    border: 1px solid #999999;
+    border-radius: 6px;
+    box-shadow: black 0 0 5px;
+}
+
+    .annotation-toolbar.show {
+        display: block;
+    }
+
+    /*gripper settings*/
+    .annotation-toolbar .gripper {
+        width: 20px;
+        height: 36px;
+        float: left;
+        cursor: move;
+        background-image: url("../Images/Gripper.png");
+        border-radius: 6px 0px 0px 6px;
+        margin-bottom: 2px;
+        margin-top: 2px;
+    }
+
+    /*screenshot settings*/
+    .annotation-toolbar .screenshot-name {
+        width: 263px;
+        height: 40px;
+        float: left;
+        background-color: #FFFFFF;
+        padding-left: 1px;
+        box-sizing: border-box;
+    }
+
+    .annotation-toolbar .screenshot-name.error {
+        border: 1px solid #FF0000;             
+        box-sizing: border-box;
+    }
+
+    .annotation-toolbar .screenshot-name-input {
+        width: 244px;
+        height: 100%;
+        padding-left: 10px;
+        padding-right: 2px;
+        font-size: 13px;
+        font-style: normal;
+        color: #333333;
+        border: 0px;
+        float: left;    
+    }
+
+    .annotation-toolbar .screenshot-name-error {
+        margin-left: 244px;
+        height: 100%;
+        background-color: #FFFFFF;             
+    }
+
+   .annotation-toolbar .screenshot-name-error.visible {
+        height: 12px;
+        width: 12px;
+        color: #FFFFFF;
+        background-color: #FF0000;
+        font-family: segoe;
+        font-size: 10px;
+        border-radius: 50%;
+        margin-top: 12px;
+        padding-top: 2px;
+        padding-left: 1px;
+        text-align: center;
+   }
+
+        .annotation-toolbar .screenshot-name-input:focus {
+            outline: none;
+        }
+
+    /*tools settings*/
+    .annotation-toolbar .tools {
+        width: 328px;
+        float: left;
+        cursor: pointer;
+        background-color: #999999;
+        border-radius: 0px 6px 6px 0px;
+    }
+
+    .annotation-toolbar .tool {
+        width: 40px;
+        height: 100%;
+        margin-left: 1px;
+        float: left;
+        position: relative;
+    }
+
+    .annotation-toolbar .tool-icon {
+        font-family: segoe;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+        line-height: 40px;
+        height: 100%;
+        font-weight: 700;
+        -webkit-user-select: none;
+    }
+
+        .annotation-toolbar .tool-icon:hover {
+            background-color: #DDDDDD;
+        }
+
+    .annotation-toolbar .ellipse {
+        background-color: #FFFFFF;
+    }
+
+    .annotation-toolbar .rectangle {
+        font-size: 17px;
+        background-color: #FFFFFF;
+    }
+
+    .annotation-toolbar .arrow {
+        font-size: 16px;
+        background-color: #FFFFFF;
+    }
+
+    .annotation-toolbar .text {
+        background-color: #FFFFFF;
+    }
+
+    .annotation-toolbar .blur {
+        background-color: #FFFFFF;
+    }
+
+    .annotation-toolbar .delete {
+        color: #333333;
+        font-weight: 500;
+        background-color: #FFFFFF;
+    }
+
+
+    .annotation-toolbar .save {
+        color: white;
+        background-color: #0078D7;
+        font-size: 25px;
+    }    
+
+        .annotation-toolbar .save:hover {
+            background-color: #0066B7;
+        }
+
+        .annotation-toolbar .save.disable, .save.disable:hover{
+        color: white;
+        background-color: #BABABA;
+        font-size: 25px;
+    }
+
+    .annotation-toolbar .cancel{
+        color: white;
+        background-color: #0078D7;
+        border-radius: 0px 5px 5px 0px;
+    }
+
+        .annotation-toolbar .cancel:hover{
+            background-color: #0066B7;
+        }
+
+    .annotation-toolbar .ellipse-selected {
+        background-color: #DDDDDD;
+    }
+
+    .annotation-toolbar .rectangle-selected {
+        background-color: #DDDDDD;
+    }
+
+    .annotation-toolbar .arrow-selected {
+        background-color: #DDDDDD;
+    }
+
+    .annotation-toolbar .text-selected {
+        background-color: #DDDDDD;
+    }
+
+    .annotation-toolbar .blur {
+        background-position: center;
+        background-repeat: no-repeat;
+        display: list-item;
+        list-style-type: none;
+    }
+
+    .annotation-toolbar .blur::before{
+        content: url("../Images/Blur.png");
+        padding-top: 5px;
+    }
+
+    .annotation-toolbar .blur-selected {
+        background-color: #DDDDDD;
+    }
+    .annotation-toolbar .color-selector {
+        position: absolute;
+        top: 70%;
+        left: 70%;
+        padding:4px;
+    }
+
+
+    .annotation-toolbar .colorselector-image {
+        background-image: url("../Images/ColorSelector.png");
+    }
+
+/*crop toolbar settings*/
+.crop-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 110;
+    width: 160px;
+    height: 50px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.crop-toolbar .fullscreen-image {
+        width: 153px;
+        height: 50px;
+        background-color: white;
+}
+
+.crop-toolbar .fullscreen-image::before{
+    content: url("../Images/FullScreen.png");
+}
+
+.crop-toolbar .fullscreen-image:focus {
+    outline-color: Highlight;
+}
+
+/*canvas settings*/
+.annotation-area {
+    cursor: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+    .annotation-area.crosshairs {
+        cursor: crosshair;
+    }
+
+    .annotation-area.rectangle {
+        cursor: crosshair;
+    }
+
+    .annotation-area.ellipse {
+        cursor: crosshair;
+    }
+
+    .annotation-area.crop {
+        cursor: crosshair;
+    }
+
+    .annotation-area.arrow {
+        cursor: crosshair;
+    }
+
+    .annotation-area.blur {
+        cursor: crosshair;
+    }
+
+    .annotation-area.text {
+        cursor: text;
+    }
+
+    .annotation-area canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+.text-area {
+    cursor: text;
+    display: none;
+    resize: none;
+    border: 1px solid;
+    overflow: hidden;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    background-color: transparent;
+    white-space: nowrap;
+    font-size: 14px;
+    font-family: Arial Black;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+    position: absolute;
+    box-sizing: content-box;
+}
+
+    .text-area.visible {
+        display: block;
+    }
+
+/* color pallet */
+
+.color-popup-body {
+    height: 92px;
+    width: 121px;
+    z-index: 4000;
+    background-color: #ffffff;
+    position: absolute;
+    outline: none;
+    border-radius: 2px;
+    padding: 2px;
+    border: 1px solid #999999;
+}
+
+    .color-popup-body .color-picker-patch-container {
+        height: 24px;
+        width: 24px;
+        float: left;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+        .color-popup-body .color-picker-patch-container:hover {
+            border: 1px solid #333333;
+            box-sizing: border-box;
+            padding: 2px;
+        }
+
+        .color-popup-body .color-picker-patch-container.color-patch-selected {
+            border: 1px solid #333333;
+            box-sizing: border-box;
+            padding: 2px;
+        }
+
+    .color-popup-body .color-picker-patch {
+        height: 100%;
+        width: 100%;
+    }
+        

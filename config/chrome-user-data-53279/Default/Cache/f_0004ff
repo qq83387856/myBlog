@@ -1,0 +1,519 @@
+//***************************************************************//
+// v1.1新規追加
+// Drag&Drop関連
+// 直接編集関連
+// ActiveXとFlex間にやりとりソース
+//***************************************************************//
+
+//common.jsの関数を利用する
+document.write('<script src="./common.js"></script>');
+
+//***************************************************************//
+// Drag&Drop関連
+//***************************************************************//
+
+
+//---------------------------------------------------------------//
+//Flexにアップロード開始を通知
+//@param files		全ファイル数
+//@param sessionid	セッションID
+//@return 1:D&D可/0:D&D不可
+//---------------------------------------------------------------//
+function rsnDDOnStartUpload(files, sessionId) 
+{
+	return parentUploadStart(sessionId, files);
+}
+
+//---------------------------------------------------------------//
+//Flexに全ファイルのアップロード終了を通知
+//@param fileNames	全ファイル名(ファイル名ごとに「,」で区切り)
+//@param sessionid	セッションID
+//---------------------------------------------------------------//
+function rsnDDOnUploadEnd(fileNames, sessionId) 
+{
+        var fileNameArray = fileNames.split(":");
+	parentUploadEnd(sessionId,fileNameArray);
+}
+
+//---------------------------------------------------------------//
+//FlexにD&D処理にエラーは発生したを通知
+//@param targetFilename	ファイル名
+//@param errorcode	エラーコード
+//@param errormessage	エラーメッセージ
+//@param sessionid	セッションID
+//---------------------------------------------------------------//
+function rsnDDOnError(targetFilename, errorcode, errormessage, sessionId)
+{
+	parentViewMassege(errorcode,targetFilename);
+}
+
+//---------------------------------------------------------------//
+// D&Dコントロールリサイズ処理
+//---------------------------------------------------------------//
+function resizeRsnDD()
+{
+	try {
+		if (document.rsnDDCtrl != null) {
+			document.rsnDDCtrl.width = windowWidth();
+			document.rsnDDCtrl.height = windowHeight();
+		}
+	} catch(e) {
+		//document.rsnDDCtrlは未初期化
+	}
+}
+
+//---------------------------------------------------------------//
+//RsnActiveXコントロールのインスタンスを生成する。
+//同時にActiveXコントロールのアクティブ化対策になる。
+//@param activexInfo	ActiveXコントロールバージョン情報
+//@param faceUrl        ActiveXコントロール上に表示するWebページのURL
+//@param uploadUrl	D&Dファイル登録URL
+//@param maxCount	一回でD&Dできる最大ファイル数
+//@param maxFileSize	D&Dできる最大ファイルサイズ
+//@param forbidExtension禁止する拡張子。複数の場合は「,」で区切り。
+//@param sessionId	セッションID
+//@param viewerId	ViewerId。メイン画面の場合は、空文字にする
+//---------------------------------------------------------------//
+function createRsnActiveXControl(id,
+                                 activexInfo, 
+                                 faceUrl, 
+                                 uploadUrl, 
+                                 maxCount, 
+                                 maxFileSize,
+                                 forbidExtension,
+                                 sessionId,
+                                 viewerId,
+                                 logLevel)
+{
+	document.write('<OBJECT');
+	document.write(' ID=', id);
+	document.write(' CLASSID="CLSID:A672D4FE-5270-4A3E-B055-13194C036C99"');
+	document.write(' type="application/x-oleobject"');
+	document.write(' codebase=', activexInfo);
+	document.write('>');
+	document.write(' <PARAM NAME="debuglog" VALUE=', logLevel, '>');
+	document.write(' <PARAM NAME="faceUrl" VALUE=', faceUrl, '>');
+	document.write(' <PARAM NAME="uploadUrl" VALUE=', uploadUrl, '>');
+	document.write(' <PARAM NAME="maxCount" VALUE=', maxCount, '>');
+	document.write(' <PARAM NAME="maxFileSize" VALUE=', maxFileSize, '>');
+	document.write(' <PARAM NAME="forbidExtension" VALUE=', forbidExtension, '>');
+	document.write(' <PARAM NAME="sessionId" VALUE=', sessionId, '>');
+	document.write(' <PARAM NAME="viewerId" VALUE=', viewerId, '>');
+	document.write(' </OBJECT>');
+
+}
+
+
+//***************************************************************//
+// 直接編集関連
+//***************************************************************//
+
+//---------------------------------------------------------------//
+//AutoEdit処理のローカルログレベルを設定
+//@param logLevel       ログレベル
+//---------------------------------------------------------------//
+var autoloadLogLevel = 0;
+function setAutoloadLogLevel(logLevel)
+{
+	autoloadLogLevel = logLevel;
+}
+
+
+//オブジェクトAutoEdit生成フラグ
+var objectRsn;
+//---------------------------------------------------------------//
+//AutoEdit処理の最大アップロード可能なファイルサイズを設定
+//@param maxFileSize    最大ファイルサイズ
+//---------------------------------------------------------------//
+function setAutoloadMaxFileSize(maxFileSize)
+{
+	try {
+		if (AutoEdit != null) {
+			AutoEdit.SetMaxFileSize(maxFileSize);
+			//オブジェクトAutoEdit生成成功
+			objectRsn = 1;
+		} else {
+			//オブジェクトAutoEdit生成失敗
+			objectRsn = 0;
+		}
+	} catch(e) {
+		//オブジェクトAutoEdit生成失敗
+		objectRsn = 0;
+	}
+}
+
+//---------------------------------------------------------------//
+//AutoEdit処理の最大アップロード可能なFTSファイルサイズを設定
+//@param maxFileSize    最大ファイルサイズ
+//---------------------------------------------------------------//
+function setAutoloadMaxFTSFileSize(maxFileSize)
+{
+	try {
+		if (AutoEdit != null) {
+			AutoEdit.SetMaxFTSFileSize(maxFileSize);
+			//オブジェクトAutoEdit生成成功
+			objectRsn = 1;
+		} else {
+			//オブジェクトAutoEdit生成失敗
+			objectRsn = 0;
+		}
+	} catch(e) {
+		//オブジェクトAutoEdit生成失敗
+		objectRsn = 0;
+	}
+}
+
+//---------------------------------------------------------------//
+//flexView.jspページのonLoadイベント処理
+//@param sessionId      セッションID
+//@param logLevel       ログレベル
+//@param maxFileSize    アップロード可能なファイル最大サイズ
+//---------------------------------------------------------------//
+function autoeditInit(sessionId, logLevel, maxFileSize, maxFTSFileSize)
+{
+	//common.jsを利用
+	setSessionId(sessionId);
+	//
+	setAutoloadLogLevel(logLevel);
+	//
+	setAutoloadMaxFileSize(maxFileSize);
+	//
+	setAutoloadMaxFTSFileSize(maxFTSFileSize);
+}
+
+//---------------------------------------------------------------//
+//編集プロセスを起動することをActiveXに要求
+//@param url            ファイルダウンロードURL
+//@param filename       ファイル名
+//@param openMode       オープンモード(0:読み取りモード/1:編集モード)
+//---------------------------------------------------------------//
+function startEdit(url, filename, openMode) {
+
+	try {
+		if (objectRsn == 1) {
+			//URLをエンコーディングする(";jsessionid=JSESSIONID"を追加)
+			var downloadUrl =  rsnEncodeURL(url);
+			//直接編集からのダウンロードを識別のパラメータ追加
+			downloadUrl += "&pragmaPublic=true";
+			//要求依頼
+			AutoEdit.StartEdit(document, downloadUrl, filename, "reserve", openMode, autoloadLogLevel);
+		} else {
+			//利用不可
+			rsnEditOnError(1, filename, "reserve", "warn.activex.notinstall", "out of service.");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//FTSファイル編集プロセスを起動することをActiveXに要求
+//@param url            ファイルダウンロードURL
+//@param filename       ファイル名
+//@param openMode       オープンモード(0:読み取りモード/1:編集モード/2:新規ファイル
+//---------------------------------------------------------------//
+function startEditFTS(url, filename, openMode) {
+
+	try {
+		if (objectRsn == 1) {
+			//URLをエンコーディングする(";jsessionid=JSESSIONID"を追加)
+			var downloadUrl =  rsnEncodeURL(url);
+			//直接編集からのダウンロードを識別のパラメータ追加
+			downloadUrl += "&pragmaPublic=true";
+			//要求依頼
+			AutoEdit.StartEditFTS(document, downloadUrl, filename, "reserve", openMode, autoloadLogLevel);
+		} else {
+			//利用不可
+			rsnEditOnError(1, filename, "reserve", "warn.activex.notinstall", "out of service.");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//編集結果をアップロードすることをActiveXに要求
+//@param url            ファイルアップロードURL
+//@param filename       ファイル名
+//@param key            ?
+//---------------------------------------------------------------//
+function uploadFile(url, filename) {
+
+	try {
+		if (objectRsn == 1) {
+			//URLをエンコーディングする(";jsessionid=JSESSIONID"を追加)
+			var uploadUrl = rsnEncodeURL(url);
+			//要求依頼
+			AutoEdit.UpLoadFile(document, uploadUrl, filename, "reserve");
+		} else {
+			//利用不可
+			rsnEditOnError(1, filename, "reserve", "warn.activex.notinstall", "out of service.");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//編集結果をキャンセルすることをActiveXに通知(ActiveX側の後処理必要)
+//@param filename       ファイル名
+//@param key            ?
+//---------------------------------------------------------------//
+function cancelEdit(filename) {
+	try {
+		if (objectRsn == 1) {
+			AutoEdit.CancelEdit(document, filename, "reserve");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//編集終了することをActiveXに通知(ActiveX側の後処理必要)
+//@param filename       ファイル名
+//@param key            ?
+//---------------------------------------------------------------//
+function endEdit(filename) {
+	try {
+		if (objectRsn == 1) {
+			AutoEdit.EndEdit(document, filename, "reserve");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//編集結果を再起動することをActiveXに通知(ActiveX側の後処理必要)
+//@param filename       ファイル名
+//@param key            ?
+//@param openMode       オープンモード(0:読み取りモード/1:編集モード)
+//@param lanuchApplication オープンモードは１の場合、起動するアプリケーションを指定する。
+//---------------------------------------------------------------//
+function resumeEdit(filename, openMode, lanuchApplication) {
+
+	if ((lanuchApplication == undefined) || (lanuchApplication == null) || (lanuchApplication == 0)) {
+		lanuchApplication = "";
+	}
+
+	try {
+		if (objectRsn == 1) {
+			AutoEdit.ResumeEdit(document, filename, "reserve", openMode, lanuchApplication);
+		} else {
+			//利用不可
+			rsnEditOnError(1, filename, "reserve", "warn.activex.notinstall", "out of service.");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//FTSの編集結果を再起動することをActiveXに通知(ActiveX側の後処理必要)
+//@param filename       ファイル名
+//@param openMode       オープンモード(0:読み取りモード/1:編集モード)
+//---------------------------------------------------------------//
+function resumeEditFTS(filename, openMode) {
+
+	try {
+		if (objectRsn == 1) {
+			AutoEdit.ResumeEditFTS(document, filename, "reserve", openMode);
+		} else {
+			//利用不可
+			rsnEditOnError(1, filename, "reserve", "warn.activex.notinstall", "out of service.");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//編集プロセスを起動する前にダウンロード終了通知
+//@param filename       ファイル名
+//@param key            ?
+//---------------------------------------------------------------//
+function rsnEditDownLoadEnd(filename, reserve)
+{
+        Sys0Application.rsnEditDownLoadEnd(filename, reserve);
+}
+
+//---------------------------------------------------------------//
+//編集プロセスを終了したことを通知
+//@param filename       ファイル名
+//@param key            ?
+//@param editResult     編集結果フラグ(0:編集なし/1:編集あり/2:編集プロセス監視不可)
+//---------------------------------------------------------------//
+function rsnEditEnd(filename, key, editResult) 
+{
+	Sys0Application.onCompleted(1, filename, editResult);
+}
+
+//---------------------------------------------------------------//
+//編集ファイルサイズオーバーのことを通知
+//@param filename       ファイル名
+//@param key            ?
+//---------------------------------------------------------------//
+function rsnResumeEditConfirm(filename, key) 
+{
+	Sys0Application.onResumeEdit(filename, key);
+}
+
+//---------------------------------------------------------------//
+//編集ファイルが関連付けが見つからないことを通知
+//@param filename       ファイル名
+//@param key            ?
+//---------------------------------------------------------------//
+function rsnUnknownFileExt(filename, key) 
+{
+	Sys0Application.rsnUnknownFileExt(filename, key);
+}
+
+//---------------------------------------------------------------//
+//イメージファイル編集アプリケーションのBETAかペイントかを開く確認することを通知
+//@param filename       ファイル名
+//@param key            ?
+//@param confirmCode    確認メッセージキー
+//@param lanuchApplication 起動するアプリケーション
+
+//---------------------------------------------------------------//
+function rsnImageEdit(filename, key, confirmCode, lanuchApplication) 
+{
+	Sys0Application.rsnImageEdit(filename, key, confirmCode, lanuchApplication);
+}
+
+//---------------------------------------------------------------//
+//編集結果をアップロード終了したことを通知
+//@param filename       ファイル名
+//@param key            ?
+//---------------------------------------------------------------//
+function rsnEditUploadEnd(filename, reserve)
+{
+        Sys0Application.onCompleted(2, filename, 0);
+}
+
+//---------------------------------------------------------------//
+//エラーが発生したことを通知
+//@param operation      操作フラグ(1:編集プロセスを起動する/2:編集結果をアップロードする)
+//@param filename       ファイル名
+//@param reserve        保留
+//@param errorcode      エラーコード
+//@param errormessage   エラーメッセージ
+//---------------------------------------------------------------//
+function rsnEditOnError(operation, filename, reserve, errorcode, errormessage)
+{
+ 	Sys0Application.onError(operation, filename, errorcode, errormessage);
+}
+
+//---------------------------------------------------------------//
+//FlexからのURLをエンコーディングする
+//@param url            対象のURL
+//@return エンコーディングしたURL
+//---------------------------------------------------------------//
+function rsnEncodeURL(url) {
+
+	//URLをエンコーディングする(";jsessionid=JSESSIONID"を追加)
+	var urls = url.split("?");
+	return urls[0] + ";jsessionid=" + getSessionId() + "?" + urls[1];
+}
+
+////////////////////////////////////////////////////////////////////
+// 印刷関連
+///////////////////////////////////////////////////////////////////
+
+//---------------------------------------------------------------//
+//1ファイルの印刷要求をActiveXに要求
+//@param url            ファイルダウンロードURL
+//@param filename       ファイル名
+//@param printername    プリンター名。空の場合はデフォルトプリンターとする。
+//---------------------------------------------------------------//
+function rsnPrint(url, filename, printername) {
+	try {
+		if (objectRsn == 1) {
+			//URLをエンコーディングする(";jsessionid=JSESSIONID"を追加)
+			var downloadUrl =  rsnEncodeURL(url);
+			//直接編集からのダウンロードを識別のパラメータ追加
+			downloadUrl += "&pragmaPublic=true";
+			//要求依頼
+			AutoEdit.StartPrint(document, downloadUrl, filename, printername);
+		} else {
+			//利用不可
+			rsnPrintOnError(filename, "warn.activex.notinstall");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//印刷処理のReaderプロセスが開始したことをFlexに通知
+//@param filename       ファイル名。startPrintのfilenameと一致する。
+//---------------------------------------------------------------//
+function rsnPrintStart(filename) {
+	Sys0Application.rsnPrintStart(filename);
+}
+
+//---------------------------------------------------------------//
+//印刷処理が終了したことをFlexに通知
+//@param filename       ファイル名。startPrintのfilenameと一致する。
+//---------------------------------------------------------------//
+function rsnPrintEnd(filename) {
+	Sys0Application.rsnPrintEnd(filename);
+}
+
+//---------------------------------------------------------------//
+//ローカルプリンター一覧取得をActiveXに要求
+//---------------------------------------------------------------//
+function rsnGetPrinterList() {
+	try {
+		if (objectRsn == 1) {
+			//要求依頼
+			AutoEdit.GetPrinterList(document);
+		} else {
+			//利用不可
+			rsnPrintOnError("", "warn.activex.notinstall");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//ローカルプリンター一覧取得をActiveXに要求
+//@param printerList	ローカルプリンター名リスト。先頭はデフォルトプリンターである。
+//                      複数プリンターの場合はカンマ区切る。
+//                      ローカルに登録しているプリンターがない場合は、空文字列
+//                      例:形式:\\server1\PrinterName1,\\server1\PrinterName2,\\server2\PrinterName1
+//---------------------------------------------------------------//
+function rsnPrinterList(printerList) {
+	//配列にする
+	var printerListArray = printerList.split(",");
+	//
+	Sys0Application.rsnPrinterList(printerListArray); 
+}
+
+//---------------------------------------------------------------//
+//印刷処理を中止することをActiveXに要求
+//---------------------------------------------------------------//
+function rsnCancelPrint() {
+	try {
+		if (objectRsn == 1) {
+			//要求依頼
+			AutoEdit.CancelPrint();
+		} else {
+			//利用不可
+			rsnPrintOnError("", "warn.activex.notinstall");
+		}
+	} catch(e) {
+		//
+	}
+}
+
+//---------------------------------------------------------------//
+//印刷処理エラーが発生したことをFlexに通知
+//@param filename       ファイル名。startPrintのfilenameと一致する。
+//@param errorcode      エラーコード
+//---------------------------------------------------------------//
+function rsnPrintOnError(filename, errorcode) {
+	Sys0Application.rsnPrintOnError(filename, errorcode);
+}

@@ -1,0 +1,1 @@
+The <strong><code>UIEvent.detail</code></strong> read-only property, when non-zero, provides the current (or next, depending on the event) click count.

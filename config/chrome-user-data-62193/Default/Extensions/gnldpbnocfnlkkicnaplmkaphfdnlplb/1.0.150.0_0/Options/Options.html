@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../Scripts/outer.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/require.js"></script>
+    <script src="../Scripts/loaderConfig.js"></script>
+    <script src="../Options/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Options/Options.css" />
+</head>
+<body>
+
+    <div ng-controller="optionsController">
+        <div>
+            <label>Select tracing level (console traces) </label>
+            <select class="form-control" ng-model="selected" ng-change="selectedItemChanged()">
+                <optgroup ng-repeat="v in values">
+                    <option ng-repeat='(key,value) in v' value="{{key}}">{{value}}</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="traces-link" ng-show="showTraceLink">
+            Explore diagnostic logs/traces here: <button class="show-traces-button" ng-click="showAllTraces()">Traces</button>
+        </div>
+        <hr>
+        <div class="feature-flags">
+            <div class="title">
+                Enable following feature(s): <br>
+            </div>
+            <div class="feature-info">
+                    <input class="check-box" type="checkbox" ng-model="actionLog" ng-change="changeActionLogFlag()">
+                    <b>Image action log</b>
+                    <br>
+                    <div class="content">Captures mouse clicks, touch gestures and keyboard events. Refresh your web application after you enable or disable this option.</div>
+                <div class="action-log-count-container">    
+                    <span class="action-log-count-text"> Number of most recent events to record (Maximum 200) </span>
+                    <input class="action-log-count-number" ng-class="{'action-log-count-error' : !!actionLogCountError}" type="number" ng-model="actionLogCount" ng-change="changeMaxActionLogCount()" min="1" max="200" />
+                </div>
+            <div class="feature-info">
+                <input class="check-box" type="checkbox" ng-model="perfData" ng-change="changePerfDataFlag()">
+                <b>Page load data</b>
+                <br>
+                <div class="content">Captures page load data along with timing of the resources loaded for your web application.</div>
+            </div>
+            <div class="feature-info">
+                <input ng-disabled="disableVideoOption" class="check-box" type="checkbox" ng-model="includeInProgressVideoRecording" ng-change="changeVidRecFlag()">
+                <b ng-class="{'disableVideoOption': disableVideoOption}">Include ongoing screen recording</b>
+                <br>
+                <div ng-class="{'disableVideoOption': disableVideoOption}" class="content">Stop and include ongoing screen recording with the bug/task/feedback being filed.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

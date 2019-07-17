@@ -1,0 +1,16 @@
+<application>
+  <component name="AppStorage">
+    <histories>
+      <item value="Show Document Infomation Command" />
+      <item value="editcancel" />
+    </histories>
+    <option name="languageScores">
+      <map>
+        <entry key="CHINESE" value="1" />
+        <entry key="ENGLISH" value="1" />
+        <entry key="CATALAN" value="4" />
+        <entry key="JAPANESE" value="5" />
+      </map>
+    </option>
+  </component>
+</application>

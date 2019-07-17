@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="VideoTimeoutAlert.js"></script>
+    <style>
+        .warning-content {
+            display: inline; margin-top: 30px;margin-left: 30px;
+        }
+        .warning-title {
+            font-size: 20px;color: #0079CC;
+        }
+        .timer-text {
+            display: flex;font-size: 13px;font-style: italic; color: #999999
+        }
+        .timer-counter {
+            color: #000000;font-style: normal
+        }
+        .warning-text {
+            font-size: 14px; color: #333333;margin-top: 20px
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex">
+        <div class="warning-content">
+            <div id="warningtitle" class="warning-title">Screen recording alert!</div>
+            <div id="timertext" class="timer-text">Recording will automatically stop after:&nbsp;<div id="timer" class="timer-counter">1:00</div>&nbsp;minute</div>
+            <div id="warningtext" class="warning-text">Your screen recording is about to stop as it is reaching its maximum limit of 10 minutes. Please start the screen recording again to continue capturing your screen.</div>
+        </div>
+
+
+    </div>
+</body>
+</html>

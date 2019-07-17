@@ -1,0 +1,30 @@
+{
+   "background": {
+      "page": "background.html"
+   },
+   "content_scripts": [ {
+      "js": [ "jquery-3.1.1.min.js", "gmail.js", "googledrive.js", "initAnalyzer.js", "ChromeLog.js", "outlookLightAnalyzer.js", "outlookLight.js", "content_scripts.js" ],
+      "matches": [ "https://mail.google.com/mail/*", "https://drive.google.com/*", "https://outlook.office.com/*", "https://outlook.office365.com/*", "https://outlook.live.com/*" ],
+      "run_at": "document_end"
+   }, {
+      "js": [ "jquery-3.1.1.min.js", "domAnalyze.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   }, {
+      "js": [ "domModified.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   }, {
+      "js": [ "jquery-3.1.1.min.js", "URLConverter.js", "ipAddress.js", "idAdt.js", "idAdtChrome.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "SKYSEA Client View Addon",
+   "incognito": "spanning",
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDuj+ZatwuxgEzidI4qg13MdtJ3L/cT11tNXXICg+1zezGI+413zBDtr5yC6FyNKoRlKYL3ezYaZPDMLB+V+Zv0t9EiHELIPZqvq6CSPs0WZjkS5xZ3rkwoRSCvkBodaA0s8IrnV7ju48iOlcxC/pFXi2rwQWf8XEi2n3OU9isHWwIDAQAB",
+   "manifest_version": 2,
+   "name": "SKYSEA Client View",
+   "permissions": [ "storage", "nativeMessaging", "tabs", "downloads", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
+   "update_url": "data:text/xml;charset=utf-8,",
+   "version": "14.0.0.800"
+}

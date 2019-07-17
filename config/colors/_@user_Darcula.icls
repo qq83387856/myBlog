@@ -1,0 +1,58 @@
+<scheme name="_@user_Darcula" version="142" parent_scheme="Darcula">
+  <option name="FONT_SCALE" value="1.0" />
+  <metaInfo>
+    <property name="created">2017-03-22T19:42:00</property>
+    <property name="ide">idea</property>
+    <property name="ideVersion">2017.1.0.0</property>
+    <property name="modified">2019-07-16T17:10:05</property>
+    <property name="originalScheme">Darcula</property>
+  </metaInfo>
+  <option name="LINE_SPACING" value="1.0" />
+  <option name="EDITOR_FONT_SIZE" value="18" />
+  <option name="EDITOR_FONT_NAME" value="Consolas" />
+  <option name="CONSOLE_FONT_NAME" value="Monospaced" />
+  <option name="CONSOLE_FONT_SIZE" value="12" />
+  <colors>
+    <option name="FILESTATUS_ADDED" value="859900" />
+    <option name="FILESTATUS_COPIED" value="2aa198" />
+    <option name="FILESTATUS_DELETED" value="b58900" />
+    <option name="FILESTATUS_HIJACKED" value="d33682" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="b58900" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="b58900" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="cb4b16" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="cb4b16" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="cb4b16" />
+    <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="808080" />
+    <option name="FILESTATUS_MERGED" value="6c71c4" />
+    <option name="FILESTATUS_MODIFIED" value="2aa198" />
+    <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="268bd2" />
+    <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="268bd2" />
+    <option name="FILESTATUS_OBSOLETE" value="b58900" />
+    <option name="FILESTATUS_RENAMED" value="268bd2" />
+    <option name="FILESTATUS_SUPPRESSED" value="" />
+    <option name="FILESTATUS_SWITCHED" value="268bd2" />
+    <option name="FILESTATUS_UNKNOWN" value="d33682" />
+    <option name="FILESTATUS_addedOutside" value="d33682" />
+    <option name="FILESTATUS_changelistConflict" value="cb4b16" />
+    <option name="FILESTATUS_modifiedOutside" value="2aa198" />
+  </colors>
+  <attributes>
+    <option name="HTML_CODE">
+      <value />
+    </option>
+    <option name="KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW">
+      <value>
+        <option name="FONT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="KOTLIN_LABEL">
+      <value />
+    </option>
+    <option name="MATCHED_BRACE_ATTRIBUTES">
+      <value>
+        <option name="BACKGROUND" value="3b514d" />
+        <option name="FONT_TYPE" value="1" />
+      </value>
+    </option>
+  </attributes>
+</scheme>

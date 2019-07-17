@@ -1,0 +1,8 @@
+<application>
+  <component name="ExportableFileTemplateSettings">
+    <includes_templates>
+      <template name="File Header.java" reformat="true" live-template-enabled="true" enabled="true" />
+      <template name="Python File Header.py" reformat="true" live-template-enabled="true" />
+    </includes_templates>
+  </component>
+</application>

@@ -1,0 +1,1 @@
+The <strong><code>backdrop-filter</code></strong> <a href="/en-US/docs/Web/CSS">CSS</a> property lets you apply graphical effects such as blurring or color shifting to the area behind an element. Because it applies to everything <em>behind</em> the element, to see the effect you must make the element or its background at least partially transparent.

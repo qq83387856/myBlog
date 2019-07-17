@@ -1,0 +1,1 @@
+The <code><strong>FocusEvent.relatedTarget</strong></code> read-only property represents a secondary target for this event, which will depend on the event itself. In some cases (like when tabbing in or out of a page), this property may be set to <code>null</code> for security reasons.

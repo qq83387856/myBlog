@@ -1,0 +1,15 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <ignoreFiles list="*.hprof;*.iml;*.pyc;*.pyo;*.rbc;*.yarb;*~;.DS_Store;.classpath;.git;.hg;.idea;.project;.settings;.svn;.vs;.vscode;CVS;__pycache__;_svn;bin;e2e;environment.ts;obj;vssver.scc;vssver2.scc;" />
+    <extensionMap>
+      <mapping pattern=".gitignore_global" type="Git file" />
+      <mapping pattern="CNAME" type="PLAIN_TEXT" />
+      <mapping pattern="说明" type="PLAIN_TEXT" />
+      <mapping pattern="123" type="PLAIN_TEXT" />
+      <mapping pattern="生成的代码在这里" type="PLAIN_TEXT" />
+      <mapping ext="py" type="PLAIN_TEXT" />
+      <mapping ext="sdef" type="XML" />
+      <mapping ext="app" type="AppleScript file" />
+    </extensionMap>
+  </component>
+</application>

@@ -1,0 +1,9 @@
+<toolSet name="External Tools">
+  <tool name="update" description="update" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="$USER_HOME$/BashFile/updateSKT.sh" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="C:/Users/hu/BashFile" />
+    </exec>
+  </tool>
+</toolSet>
